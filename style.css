@@ -71,4 +71,68 @@ nav{
     margin-right: auto;
     width: 20%;
 }
+.normalButton{
+    background-color: rgb(88, 88, 88); 
+    border-style: solid;
+    border-width: medium;
+    border-color: rgb(88, 88, 88);
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    transition-duration: 0.3s;
+    margin-right: 2%;
+    cursor: pointer;
+}
 
+#createList{
+    width: 30%;
+}
+#deleteList{
+    width: 30%;
+}
+.normalButton:hover{
+    background-color: white; 
+    color: black;
+}
+.headRow{
+    padding: 2% 2%; 
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.play{
+    float: left;
+}
+.playlistRow{
+
+    background-color: lightgray;
+    padding: 2% 2%; 
+    width: 100%;
+    margin-top: 5%;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    
+}
+.playlistRow h1{
+
+    display: inline-block;
+    font-size: 32px;
+    margin-right: 5%;
+ 
+
+}
+.playlistRow h2{
+    display: inline-block;
+
+    font-size: 32px;
+    margin-right: 5%;
+}
+.playlistRow h3{
+    display: inline-block;
+
+    font-size: 32px;
+}
