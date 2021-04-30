@@ -7,6 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Playlists</title>
+    <script>
+        'use strict';
+        function createPlaylist(){
+            let lists = document.getElementById("bodyLists");
+            let playlist = document.createElement("div");
+            playlist.classList.add('playlistRow');
+            let h1 = document.createElement("h1");
+            let h2 = document.createElement("h2");
+            let h3 = document.createElement("h3");
+            h1.innerHTML = "Name";
+            h2.innerHTML = "Anzahl Songs: x";
+            h3.innerHTML = "Dauer in Minuten: x min";
+            lists.appendChild(playlist);
+            playlist.appendChild(h1);
+            playlist.appendChild(h2);
+            playlist.appendChild(h3);
+        }
+    </script>
 </head>
 
 <body>
@@ -28,23 +46,13 @@
         <div class="header">
             <h1>Herzlich Willkommen bei den Playlists</h1>
         </div>
-        <div class="body">
+        <div id="bodyLists" class="body">
             <div class="headRow">
-                <button class="normalButton" id="createList">Playlist hinzufügen</button>
+                <button class="normalButton" id="createList" onclick="createPlaylist()">Playlist hinzufügen</button>
                 <button class="normalButton" id="deleteList">Playlist löschen</button>
             </div>
-            <div class="playlistRow">
-                <h1>Name</h1>
-                <h2>Anzahl Songs: x</h2>
-                <h3>Dauer in Minuten: x min</h2>
-            
-            </div>
-            <div class="playlistRow">
-                <h1>Name</h1>
-                <h2>Anzahl Songs: x</h2>
-                <h3>Dauer in Minuten: x min</h2>
-            
-            </div>
+
+
         </div>
     </div>
 </body>
