@@ -71,6 +71,9 @@ nav{
     margin-right: auto;
     width: 20%;
 }
+.header{
+    position: relative;
+}
 .normalButton{
     background-color: rgb(88, 88, 88); 
     border-style: solid;
@@ -95,6 +98,7 @@ nav{
     color: black;
 }
 .headRow{
+
     padding: 2% 2%; 
     width: 100%;
     align-items: center;
