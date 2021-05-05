@@ -48,8 +48,8 @@
     height: 100%;
   }
   
-  .showcase h1 {
-    font-size: 4rem;
+  .showcase h3 {
+    font-size: 3rem;
   }
   
   .showcase p {
@@ -213,4 +213,9 @@
     transition: color 0.4s ease;
   }
   
-  
+  #exampleAnimation{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
