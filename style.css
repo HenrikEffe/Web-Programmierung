@@ -140,4 +140,9 @@ nav{
     display: inline-block;
 
     font-size: 32px;
+    margin-right: 5%;
+}
+.playlistRow input {
+    height: 30px;
+    width: 30px;
 }
