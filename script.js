@@ -24,7 +24,7 @@ function createPlaylist(){
     playlist.appendChild(check);
 }
 
-/*loescht ausgewählte Playlists*/
+/*loescht ausgewaehlte Playlists*/
 function deletePlaylist(){
 
     let playlist = document.getElementsByClassName("playlistRow");
