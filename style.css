@@ -42,21 +42,6 @@
     width: 30%;
 }
   
-  .btn {
-    display: inline-block;
-    border: none;
-    background: var(--primary-color);
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    margin-top: 1rem;
-    transition: opacity 1s ease-in-out;
-    text-decoration: none;
-  }
-  
-  .btn:hover {
-    opacity: 0.7;
-  }
-  
   /* MENU STYLES */
   .menu-wrap {
     position: fixed;
@@ -202,4 +187,71 @@
   .exampleAnimation{
     align-items: center;
     size: 3rem;
+}
+
+.normalButton{
+  background-color: rgb(88, 88, 88); 
+  border-style: solid;
+  border-width: medium;
+  border-color: rgb(88, 88, 88);
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  transition-duration: 0.3s;
+  margin-right: 2%;
+  cursor: pointer;
+  float: left;
+}
+
+.play{
+  float: left;
+}
+
+.playlistRow{
+
+  background-color: lightgray;
+  padding: 2% 2%; 
+  width: 100%;
+  margin-top: 5%;
+  color: black;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  
+}
+
+.playlistRow h1{
+
+  display: inline-block;
+  font-size: 32px;
+  margin-right: 5%;
+
+
+}
+.playlistRow h2{
+  display: inline-block;
+
+  font-size: 32px;
+  margin-right: 5%;
+}
+.playlistRow h3{
+  display: inline-block;
+
+  font-size: 32px;
+  margin-right: 5%;
+}
+.playlistRow input[type=checkbox] {
+  height: 30px;
+  width: 30px;
+}
+.playlistRow input[type=text]{
+  font-size: 100%;
+  width: 50%;
+  padding: 1%;
+  display: inline-block;
+  margin-right: 5%;
+}
+.playlistRow:hover input[type=text]{
+  background-color: rgb(172, 216, 243);
 }
