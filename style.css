@@ -203,6 +203,11 @@
   float: left;
 }
 
+.normalButton:hover{
+  background-color: white; 
+  color: black;
+}
+
 .play{
   float: left;
 }
