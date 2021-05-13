@@ -260,3 +260,20 @@
 .playlistRow:hover input[type=text]{
   background-color: rgb(172, 216, 243);
 }
+
+
+.headRow{
+
+  padding: 2% 2%; 
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+#createList{
+  width: 30%;
+}
+#deleteList{
+  width: 30%;
+}

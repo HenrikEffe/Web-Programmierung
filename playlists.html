@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Playlists</title>
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -27,6 +28,20 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="main_content">
+        <div class="header">
+            <h1>Herzlich Willkommen bei den Playlists</h1>
+            <div class="headRow">
+                <button class="normalButton" id="createList" onclick="createPlaylist()">Playlist hinzufügen</button>
+                <button class="normalButton" id="deleteList" onclick="deletePlaylist()">Ausgewählte Playlist
+                    löschen</button>
+            </div>
+        </div>
+        <div id="bodyLists" class="body">
+
         </div>
     </div>
 
