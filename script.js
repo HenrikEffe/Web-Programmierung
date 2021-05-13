@@ -45,7 +45,6 @@ function setPlaylistName(number) {
 
     byby = playlist.getElementsByTagName("input")[0];
     byby.remove();
-
     let h1 = document.createElement("h1");
     let h2 = document.createElement("h2");
     let h3 = document.createElement("h3");
@@ -54,7 +53,6 @@ function setPlaylistName(number) {
     h3.innerHTML = "Dauer in Minuten: x min";
     let check = document.createElement("input");
     check.setAttribute("type", "checkbox");
-
     playlist.appendChild(h1);
     playlist.appendChild(h2);
     playlist.appendChild(h3);
