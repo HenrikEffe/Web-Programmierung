@@ -2,6 +2,13 @@
 
 let playlistNumber = 1;
 
+
+/*Dark-Mode*/
+function myFunction() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+}
+
 /*erstellt neue Playlist*/
 function createPlaylist() {
     let lists = document.getElementById("bodyLists");
