@@ -28,7 +28,7 @@
     padding: 30px;
     text-align: center;
     margin-bottom: 3%;
-   
+  
 }
 
 .main_content .body{
@@ -230,7 +230,7 @@
 .playlistRow{
   color: black;
   background-color: lightgray;
-  padding: 2% 2%; 
+  padding: 2%; 
   width: 100%;
   margin-top: 5%;
   align-items: center;
@@ -241,25 +241,24 @@
 }
 
 .playlistRow h1{
-
   display: inline-block;
   font-size: 32px;
   margin-right: 5%;
-
-
 }
+
 .playlistRow h2{
   display: inline-block;
-
   font-size: 32px;
   margin-right: 5%;
 }
+
 .playlistRow h3{
   display: inline-block;
-
   font-size: 32px;
   margin-right: 5%;
 }
+
+
 .playlistRow input[type=checkbox] {
   height: 30px;
   width: 30px;
@@ -278,7 +277,6 @@
 
 .headRow{
   padding: 2% 2%; 
-  width: 100%;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -289,4 +287,45 @@
 }
 #deleteList{
   width: 30%;
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px ) {
+
+  .playlistRow h1{
+    font-size: 12px;
+    left: 0px;
+  }
+  
+  .playlistRow h2{
+  font-size: 12px;
+  }
+
+.playlistRow h3{
+  visibility: hidden;
+  display: none;
+}
+
+.main_content .header{
+  font-size: 12px;
+  padding: 40px;
+}
+
+.normalButton{
+  border-style: solid;
+  border-width: medium;
+  font-size: 12px;
+}
+
+#createList{
+  width: 50%;
+}
+#deleteList{
+  width: 50%;
+}
+
 }

@@ -56,8 +56,8 @@ function setPlaylistName(number) {
     let h2 = document.createElement("h2");
     let h3 = document.createElement("h3");
     h1.innerHTML = inputText;
-    h2.innerHTML = "Anzahl Songs: x";
-    h3.innerHTML = "Dauer in Minuten: x min";
+    h2.innerHTML = "100 Songs";
+    h3.innerHTML = "147 Minuten";
     let check = document.createElement("input");
     check.setAttribute("type", "checkbox");
     playlist.appendChild(h1);
