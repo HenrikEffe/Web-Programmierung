@@ -44,19 +44,12 @@
 }
   
 
-.dark-mode-button{
+.dark-mode-checkbox{
   position: fixed;
     top: 0;
     right: 0;
     z-index: 1;
-    display: inline-block;
-    background-color: rgba(13, 110, 139, 0.75);;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 20px;
-    transition: all 0.5s;
-    cursor: pointer;
-   
+    margin: 10px; 
 }
 
 .dark-mode {
