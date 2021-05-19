@@ -57,10 +57,7 @@
             $.ajax({
                 url: directory,
                 success: function (data) {
-                    if ($(data).find(":root")) {
-                        console.log("Children: ", $(data).find(":root"));
-                        ajax(directory + "/" + "sauflieder");
-                    }
+
                     $(data).find("a[href$='.mp3']").each(function () {
                         var filename = this.href.replace(window.location.host, "")
                             .replace("http://", "").replace(currdir, "");
