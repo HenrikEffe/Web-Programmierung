@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Startseite</title>
+</head>
+
+<body>
+    <nav>
+        <div class="navigation">
+            <h2>Navigation</h2>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="songs.html">Alle Songs</a></li>
+                <li><a href="playlists.html">Playlists</a></li>
+                <li><a href="playsite.html">Abspielseite</a></li>
+                <li><a href="#">Dark Mode</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main_content">
+        <div class="header">
+            <h1>Test für die Crawl Seite</h1>
+        </div>
+        <div class="body">
+            <div style="margin:40px 0px; border:1px solid">
+                <ul id="liste">Test</ul>
+            </div>
+
+            <div class="randomSong">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var loc = window.location.pathname;
+        var currdir = loc.substring(0, loc.lastIndexOf('/'));
+        var dir = "../../musik";
+
+        ajax(dir);
+
+        function ajax(directory) {
+            console.log("url: ", directory);
+            $.ajax({
+                url: directory,
+                success: function (data) {
+
+                    $(data).find("a[href$='.mp3']").each(function () {
+                        var filename = this.href.replace(window.location.host, "")
+                            .replace("http://", "").replace(currdir, "");
+                        var decfilename = decodeURIComponent(filename
+                            .replace(".mp3", "").replace("/", ""));
+                        $("#liste").append($("<li><a href=" + dir + filename + " target='_blank' > " + decfilename + "</a ></li > <br />"));
+                    });
+                    $(data).find("a[href$='.ogg']").each(function () {
+                        var filename = this.href.replace(window.location.host, "")
+                            .replace("http://", "").replace(currdir, "");
+                        var decfilename = decodeURIComponent(filename
+                            .replace(".ogg", "").replace("/", ""));
+                        $("#liste").append($("<li><a href=" + dir + filename + " target='_blank' > " + decfilename + "</a ></li > <br />"));
+                    });
+                }
+            });
+        }
+
+    });
+
+
+
+</script>
