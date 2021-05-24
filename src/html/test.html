@@ -38,12 +38,9 @@
             <div style="margin:40px 0px; border:1px solid">
                 <ul id="liste">Test</ul>
             </div>
-            <iframe id="musikframe" src="http://localhost/Web-Programmierung/musik" width="100%" height="500"
-                style="border:1px solid black;" title="Musik"></iframe>
+            <iframe id="musikframe" src="http://localhost/Web-Programmierung/musik" width="100%" height="500"></iframe>
 
-            <div class="randomSong">
-                <button onclick=test()>Test</button>
-            </div>
+
         </div>
     </div>
 
@@ -56,12 +53,30 @@
 
     document.body.onload = function () {
         var iframe = document.getElementById("musikframe");
-        var iframebody = iframe.contentWindow.document.getElementsByTagName('body');
-        alert("frame content : " + iframebody);
+        var iframebody = iframe.contentWindow.document.querySelector('table').rows;
+        for (var key = 0; key < iframebody.length; key++) {
+            var select = iframebody[key].querySelector('a');
+            if (select != null && (select.toString().includes(".mp3") || select.toString().includes(".ogg"))) {
+                // Musik in Webstorage speichern (ohne Ordner Zuweisung)
+                if (typeof (Storage) !== "undefined") {
+                    // setItem("Titel", "Link")
+                    // localStorage.setItem("")
+                } else {
+                    allert("Sorry! No Web Storage support...")
+                }
+                alert("frame content : " + select);
+                test(select);
+            } else if (select != null && select.toString().slice(-1) == "/" && select.toString().includes("musik")) {
+                // Unterordner aufrufen und Musik mit Ordner speichern
+                // alert("Richtig und Wichtig!" + select);
+            }
+        }
     };
 
 
+
     function test() {
+
 
     }
 
