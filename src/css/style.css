@@ -16,16 +16,21 @@ body {
   background: #f3f3f3;
 }
 
-.header {
+.main_content {
+  width: 95%;
+  margin-left: 5%;
   text-align: center;
-  padding: 30px;
-  margin-bottom: 3%;
-  text-shadow: 0  1rem 2rem #000;
 }
 
-.main_content {
-  text-align: center;
+.main_content .header {
+  padding: 30px;
+  margin-bottom: 3%;
+}
+
+.main_content .body {
   margin:30px;
+  line-height: 25px;
+ 
 }
 
 #exampleAnimation {
