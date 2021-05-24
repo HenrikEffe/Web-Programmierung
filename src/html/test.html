@@ -41,9 +41,7 @@
             <iframe id="musikframe" src="http://localhost/Web-Programmierung/musik" width="100%" height="500"
                 style="border:1px solid black;" title="Musik"></iframe>
 
-            <div class="randomSong">
-                <button onclick=test()>Test</button>
-            </div>
+
         </div>
     </div>
 
@@ -56,8 +54,8 @@
 
     document.body.onload = function () {
         var iframe = document.getElementById("musikframe");
-        var iframebody = iframe.contentWindow.document.getElementsByTagName('body');
-        alert("frame content : " + iframebody);
+        var iframebody = iframe.contentWindow.document.querySelector('table').rows;
+        alert("frame content : " + iframebody[3].querySelector('a'));
     };
 
 
