@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function huhu() {
+            let that = here.contentDocument.body.children;
+            for (let i = 0; i < that.length; ++i) {
+                console.log(that[i].innerHTML);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="javascript:huhu()">Hinein!</button><br>
+    <iframe id="here" src="../../musik" width=800 height=600></iframe>
+</body>
+
+</html>
