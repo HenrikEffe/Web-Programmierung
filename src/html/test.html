@@ -35,10 +35,7 @@
             <h1>Test für die Crawl Seite</h1>
         </div>
         <div class="body">
-            <div style="margin:40px 0px; border:1px solid">
-                <ul id="liste">Test</ul>
-            </div>
-            <iframe id="musikframe" src="http://localhost/Web-Programmierung/musik" width="100%" height="500"></iframe>
+
 
 
         </div>
@@ -51,33 +48,78 @@
 <script type="text/javascript">
 
 
-    document.body.onload = function () {
-        var iframe = document.getElementById("musikframe");
-        var iframebody = iframe.contentWindow.document.querySelector('table').rows;
-        for (var key = 0; key < iframebody.length; key++) {
-            var select = iframebody[key].querySelector('a');
-            if (select != null && (select.toString().includes(".mp3") || select.toString().includes(".ogg"))) {
-                // Musik in Webstorage speichern (ohne Ordner Zuweisung)
-                if (typeof (Storage) !== "undefined") {
-                    // setItem("Titel", "Link")
-                    // localStorage.setItem("")
-                } else {
-                    allert("Sorry! No Web Storage support...")
-                }
-                alert("frame content : " + select);
-                test(select);
-            } else if (select != null && select.toString().slice(-1) == "/" && select.toString().includes("musik")) {
-                // Unterordner aufrufen und Musik mit Ordner speichern
-                // alert("Richtig und Wichtig!" + select);
-            }
-        }
-    };
 
 
 
-    function test() {
+    // let blob = await fetch(iframebody[3].querySelector('a')).then(r => r.blob());
+    // // loadAsUrl(blob);
+    // var file = jDataView.createBuffer(
+    //     0x10, 0x01, 0x00, 0x00, // Int32 - 272
+    //     0x90, 0xcf, 0x1b, 0x47, // Float32 - 39887.5625
+    //     0, 0, 0, 0, 0, 0, 0, 0, // 8 blank bytes
+    //     0x4d, 0x44, 0x32, 0x30, // String - MD20
+    //     0x61                    // Char - a
+    // );
+
+    // var reader = new FileReader();
+
+    // reader.onload = function (e) {
+    //     var dv = new jDataView(file);
+
+    //     // "TAG" starts at byte -128 from EOF.
+    //     // See http://en.wikipedia.org/wiki/ID3
+    //     if (dv.getString(3, dv.byteLength - 128) == 'TAG') {
+    //         var title = dv.getString(30, dv.tell());
+    //         var artist = dv.getString(30, dv.tell());
+    //         var album = dv.getString(30, dv.tell());
+    //         var year = dv.getString(4, dv.tell());
+    //         console.log("test", title);
+    //     } else {
+    //         // no ID3v1 data found.
+    //         console.log("hallo", title);
+    //     }
+    // };
+
+    // reader.readAsArrayBuffer(blob);
+
+    // function loadAsUrl(theFile) {
+    //     var reader = new FileReader();
+
+    //     reader.onload = function (theFile) {
+    //         var dv = new jDataView(this.result);
+
+    //         // "TAG" starts at byte -128 from EOF.
+    //         // See http://en.wikipedia.org/wiki/ID3
+
+    //     };
+
+    //     reader.readAsArrayBuffer(theFile);
+    // };
+
+    // function loadAsUrl(theFile) {
+    //     var reader = new FileReader();
+
+    //     reader.onload = function (loadedEvent) {
+    //         // var arrayBuffer = loadedEvent.target.result;
+    //         // var dataView = new DataView(arrayBuffer, 0, arrayBuffer.byteLength);
+    //         // var byte = dataView.getUint8(0);   //gets first byte of ArrayBuffer
+
+    //         // console.log(dataView.buffer);
+
+    //         var dv = new jDataView(this.result);
+
+    //         if (dv.getString(3, dv.byteLength - 128) == 'TAG') {
+    //             var title = dv.getString(30, dv.tell());
+    //             var artist = dv.getString(30, dv.tell());
+    //             var album = dv.getString(30, dv.tell());
+    //             var year = dv.getString(4, dv.tell());
+    //         } else {
+    //             // no ID3v1 data found.
+    //         }
 
 
-    }
 
+    //     }
+    //     reader.readAsArrayBuffer(theFile);
+    // }
 </script>

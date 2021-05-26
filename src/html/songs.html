@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Alle Songs</title>
-    <script src="../../script.js"></script>
 </head>
 
-<body>
+<body onload="createPlaylist()">
     <div class="menu-wrap">
         <input type="checkbox" class="toggler">
         <div class="hamburger">
@@ -35,54 +34,13 @@
             <h1>Herzlich Willkommen bei der Song-Übersicht</h1>
         </div>
         <div class="body">
-
-            <div class="music-container">
-                <div class="box">
-                    <div class="image">
-                        <img src="test.jpg" alt="">
-                    </div>
-                    <div class="music">
-                        <audio src="test1.mp3" controls></audio>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="image">
-                        <img src="test.jpg" alt="">
-                    </div>
-                    <div class="music">
-                        <audio src="test1.mp3" controls></audio>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="image">
-                        <img src="test.jpg" alt="">
-                    </div>
-                    <div class="music">
-                        <audio src="test1.mp3" controls></audio>
-                    </div>
-                </div>
-                <div class="box">
-                    <div class="image">
-                        <img src="test.jpg" alt="">
-                    </div>
-                    <div class="music">
-                        <audio src="test1.mp3" controls></audio>
-                    </div>
-                </div>
-                <div class="box">
-                    <div class="image">
-                        <img src="test.jpg" alt="">
-                    </div>
-                    <div class="music">
-                        <audio src="test1.mp3" controls></audio>
-                    </div>
-                </div>
-
-            </div>
+            <ul id="songlist"></ul>
         </div>
     </div>
 </body>
+<script src="../javascript/songlist.js"></script>
+<script src="../javascript/darkmode.js"></script>
+<link rel="stylesheet" href="../css/stylesongs.css">
+
 
 </html>

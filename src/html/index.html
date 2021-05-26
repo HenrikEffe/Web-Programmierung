@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Startseite</title>
-    <script src="../../script.js"></script>
+
 </head>
 
-<body>
+<body onload="javascript: createIframe(), load_home()">
     <div class="menu-wrap">
         <input type="checkbox" class="toggler">
         <div class="hamburger">
@@ -38,27 +38,15 @@
 
 
 
-    <div class="main_content">
-        <div class="header">
-            <h1>Wilkommen bei WEB-Programmierung SoSe21</h1>
-        </div>
-        <div class="body">
-            <svg class="equilizer" viewBox="0 0 128 128">
-                <g>
-                    <rect class="bar" transform="translate(0,0)" y="15"></rect>
-                    <rect class="bar" transform="translate(25,0)" y="15"></rect>
-                    <rect class="bar" transform="translate(50,0)" y="15"></rect>
-                    <rect class="bar" transform="translate(75,0)" y="15"></rect>
-                    <rect class="bar" transform="translate(100,0)" y="15"></rect>
-                </g>
-            </svg>
-
-
-        </div>
+    <div class="main_content" id="test">
     </div>
-
-
-
+    <script src="../javascript/crawl.js"></script>
+    <script src="../javascript/darkmode.js"></script>
 </body>
+<script>
+    function load_home() {
+        document.getElementById("test").innerHTML = '<object type="text/html" data="abc.html" ></object>';
+    }
+</script>
 
 </html>

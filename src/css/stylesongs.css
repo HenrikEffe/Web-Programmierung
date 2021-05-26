@@ -1,0 +1,26 @@
+#songlist {
+  text-align: left;
+  list-style: none;
+  flex-wrap: wrapd;
+  width: 100%;
+  line-height: 30px;
+}
+
+#songlist li {
+  border: 1px solid;
+  margin: 5px;
+  background-color: rgb(212, 212, 212);
+}
+
+#songlist button {
+  background-color: #a2a3a2;
+  /* Green */
+  border: none;
+  color: white;
+  margin: 4px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+}

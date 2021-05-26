@@ -28,52 +28,9 @@ body {
 }
 
 .main_content .body {
-  margin:30px;
+  margin: 30px;
   line-height: 25px;
- 
 }
-
-.main_content .body .music-container{
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  
-}
-
-.main_content .body .music-container .box{
-  margin: 2rem;
-  height: 16rem;
-  width: 80%;
-  display: flex;
-  align-items: center;
-  background: #f9f9f9;
-  border-radius: 1rem;
-  box-shadow: 0 .5rem 1rem #000;
-  overflow: hidden;
-
-}
-
-.main_content .body .music-container .box .image{
-  height: 100%;
-  width: 25%;
-}
-
-.main_content .body .music-container .box .image img{
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.main_content .body .music-container .box .music{
-  width: 75%;
-}
-
-.main_content .body .music-container .box .music audio{
-  width: 100%;
-  outline: none;
-  background: #f9f9f9;
-}
-
 
 #exampleAnimation {
   display: block;
@@ -323,8 +280,6 @@ body {
   width: 30%;
 }
 
-
-
 /*
 Equalize
 */
@@ -339,27 +294,25 @@ Equalize
   animation: equalize 1.25s steps(25, end) 0s infinite;
 }
 
-.bar:nth-child(1) { 
+.bar:nth-child(1) {
   animation-duration: 3.9s;
 }
 
-.bar:nth-child(2) { 
+.bar:nth-child(2) {
   animation-duration: 4s;
 }
 
-.bar:nth-child(3) { 
+.bar:nth-child(3) {
   animation-duration: 4.3s;
 }
 
-.bar:nth-child(4) { 
+.bar:nth-child(4) {
   animation-duration: 4.4s;
 }
 
-.bar:nth-child(5) { 
+.bar:nth-child(5) {
   animation-duration: 4.1s;
 }
-
-
 
 @keyframes equalize {
   0% {
@@ -442,29 +395,20 @@ Equalize
   }
 }
 
-
-
-
-
-
-
 @media screen and (max-width: 768px) {
-
-  .main_content .body .music-container .box{
+  .main_content .body .music-container .box {
     height: 20rem;
     width: 90%;
     flex-flow: column;
-      }
-      .main_content .body .music-container .box .image{
-    
-        height: 80%;
-        width: 100%;
-      }
-      .main_content .body .music-container .box .music{
-    
-        height: 20%;
-        width: 100%;
-      }
+  }
+  .main_content .body .music-container .box .image {
+    height: 80%;
+    width: 100%;
+  }
+  .main_content .body .music-container .box .music {
+    height: 20%;
+    width: 100%;
+  }
 
   .equilizer {
     width: 70%;
