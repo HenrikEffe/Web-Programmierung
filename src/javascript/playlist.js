@@ -86,10 +86,12 @@ function getSpecificPlaylists() {
 function deletePlaylist() {
     var lists = document.getElementById("playlists");
     var items = lists.getElementsByTagName("li");
-    let songs = [];
+    let songs = new Array();
     for (var i = 0; i < items.length; ++i) {
         if (items[i].getElementsByTagName("input")[0].checked) {
-            songs.push[items[i].getElementsByTagName("a")[0].innerHTML];
+            console.log(items[i].getElementsByTagName("input")[0].checked);
+            console.log(items[i].getElementsByTagName("a")[0].innerHTML);
+            songs.push(items[i].getElementsByTagName("a")[0].innerHTML);
         }
     }
     console.log(songs);
