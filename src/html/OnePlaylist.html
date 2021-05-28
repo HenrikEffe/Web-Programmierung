@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body onload="getSpecificPlaylists('asdasdest')">
     <div class="container">
         <div class="hamburger-menu">
             <div class="line line-1"></div>
@@ -20,11 +20,8 @@
         <div class="songlist">
             <h1>Alle Playlists</h1>
 
-            <ul>
-                <li><a href="#">Playlist</a><input type="checkbox"></li>
-                <li><a href="#">Playlist</a><input type="checkbox"></li>
-                <li><a href="#">Playlist</a><input type="checkbox"></li>
-                <li><a href="#">Playlist</a><input type="checkbox"></li>
+            <ul id="playlists">
+
             </ul>
 
         </div>
@@ -48,6 +45,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="playlist.js"></script>
 
 </body>
 

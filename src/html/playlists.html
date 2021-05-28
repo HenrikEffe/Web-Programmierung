@@ -2,50 +2,50 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Playlists</title>
-    <script src="../../script.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Architect Website</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
-    <div class="menu-wrap">
-        <input type="checkbox" class="toggler">
-        <div class="hamburger">
-            <div></div>
+<body onload="getPlaylists()">
+    <div class="container">
+        <div class="hamburger-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+            <span>Schließen</span>
         </div>
-        <div class="menu">
-            <div>
-                <div>
-                    <ul>
-                        <li><a href="index.html">Startseite</a></li>
-                        <li><a href="songs.html">Alle Songs</a></li>
-                        <li><a href="playlists.html">Playlists</a></li>
-                        <li><a href="playsite.html">Abspielseite</a></li>
-                    </ul>
-                </div>
-            </div>
+
+        <div class="songlist">
+            <h1>Alle Playlists</h1>
+
+            <ul id="playlists">
+
+            </ul>
+
         </div>
+
+        <section class="sidebar">
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="index.html" class="menu-link" data-content="Startseite">Startseite</a>
+                </li>
+                <li class="menu-item">
+                    <a href="songs.html" class="menu-link" data-content="Alle Songs">Alle Songs</a>
+                </li>
+                <li class="menu-item">
+                    <a href="playlists.html" class="menu-link" data-content="Playlists">Playlists</a>
+                </li>
+                <li class="menu-item">
+                    <a href="playsite.html" class="menu-link" data-content="Abspielseite">Abspielseite</a>
+                </li>
+            </ul>
+        </section>
     </div>
-    <input type="checkbox" class="dark-mode-checkbox" onclick="myFunction()">
 
-    <div class="main_content">
-        <div class="header">
-            <h1>Herzlich Willkommen bei den Playlists</h1>
-            <div class="headRow">
-                <button class="normalButton" id="createList" onclick="createPlaylist()">Playlist hinzufügen</button>
-                <button class="normalButton" id="deleteList" onclick="deletePlaylist()">Playlist
-                    löschen</button>
-            </div>
-        </div>
-        <div id="bodyLists" class="body">
-
-        </div>
-    </div>
-
-
+    <script src="script.js"></script>
+    <script src="playlist.js"></script>
 
 </body>
 
