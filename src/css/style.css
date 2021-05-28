@@ -282,6 +282,32 @@ body {
 }
 
 
+#animationSong{
+  margin: auto;
+  width: 80%;
+  
+}
+#abspiel{
+ margin: auto;
+}
+#abspiel audio{
+ width: 50%;
+ 
+}
+#prev{
+ font-size: 250%;
+ border: none;
+ cursor: pointer;
+ background-color: none;
+}
+#next{
+  font-size: 250%;
+  border: none;
+  cursor: pointer;
+}
+#songInfo{
+  margin-bottom: 3%;
+}
 
 /*
 Equalize

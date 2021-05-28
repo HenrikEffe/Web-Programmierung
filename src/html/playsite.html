@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <title>Abspielseite</title>
     <script src="../../script.js"></script>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -30,7 +31,40 @@
         </div>
     </div>
     <input type="checkbox" class="dark-mode-checkbox" onclick="myFunction()">
+    <div class="main_content">
+        <div class="header">
+            <h1>Wilkommen bei der Abspielseite</h1>
+        </div>
+        <div class="body">
+            <div id="abspiel">
+                <div id="animationSong">
+                    <svg class="equilizer" viewBox="0 0 128 128">
+                        <g>
+                            <rect class="bar" transform="translate(0,0)" y="15"></rect>
+                            <rect class="bar" transform="translate(25,0)" y="15"></rect>
+                            <rect class="bar" transform="translate(50,0)" y="15"></rect>
+                            <rect class="bar" transform="translate(75,0)" y="15"></rect>
+                            <rect class="bar" transform="translate(100,0)" y="15"></rect>
+                        </g>
+                    </svg>
+                </div>
+                <div id="songInfo">
+                    <h1>Name des Songs,
+                        Name des interpreten
+                    </h1>
+                </div>
+                <div>
+                    <button onclick="prevSong()" id="prev"><i class='bx bx-skip-previous-circle'></i></button>
 
+                    <audio controls>
+                        <source src="02 - Robbie Williams - Angels.mp3" type="audio/mpeg">
+                    </audio>
+                    
+                    <button onclick="nextSong()" id="next"><i class='bx bx-skip-next-circle' ></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

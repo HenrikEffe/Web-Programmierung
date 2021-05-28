@@ -83,3 +83,11 @@ function deletePlaylist() {
         temp--;
     }
 }
+/* beginnt den vorherigen Song zu spielen */ 
+function prevSong(){
+    /* to do */
+}
+/* beginnt den naechsten Song zu spielen */ 
+function nextSong(){
+    /* to do */
+}
