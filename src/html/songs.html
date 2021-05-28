@@ -1,55 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="src/css/style.css" />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Musikplayer</title>
-    <link rel="stylesheet" href="../css/style.css" />
-</head>
-
-<body onload="getSongs()">
-    <div class="container">
-        <div class="hamburger-menu">
-            <div class="line line-1"></div>
-            <div class="line line-2"></div>
-            <div class="line line-3"></div>
-            <span>asdasdasdasdasd</span>
-        </div>
-
-        <div class="songlist">
-            <h1>Alle Songs</h1>
-
-            <ul id="songliste">
-
-            </ul>
-
-
-            <input type="text" class="form__input" id="playlistName" placeholder="Name für eine Playlist" />
-            <button class="normalButton" id="new" onclick="createPlaylist()">Playlist hinzufügen</button>
-        </div>
-        <section class="sidebar">
-            <ul class="menu">
-                <li class="menu-item">
-                    <a href="index.html" class="menu-link" data-content="Startseite">Startseite</a>
-                </li>
-                <li class="menu-item">
-                    <a href="songs.html" class="menu-link" data-content="Alle Songs">Alle Songs</a>
-                </li>
-                <li class="menu-item">
-                    <a href="playlists.html" class="menu-link" data-content="Playlists">Playlists</a>
-                </li>
-                <li class="menu-item">
-                    <a href="playsite.html" class="menu-link" data-content="Abspielseite">Abspielseite</a>
-                </li>
-            </ul>
-        </section>
-
+<body>
+    <div class="songlist">
+        <h1>Alle Songs</h1>
+        <ul id="songliste">
+        </ul>
+        <input type="text" class="form__input" id="playlistName" placeholder="Name für eine Playlist" />
+        <button class="normalButton" id="new" onclick="createPlaylist()">Playlist hinzufügen</button>
     </div>
 
-    <script src="../javascript/script.js"></script>
-    <script src="../javascript/songlist.js"></script>
-    <script src="../javascript/playlist.js"></script>
 </body>
-
-</html>

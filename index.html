@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architect Website</title>
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+
+<body onload="javascript: createIframe()">
+  <div class="container">
+    <div class="hamburger-menu">
+      <div class="line line-1"></div>
+      <div class="line line-2"></div>
+      <div class="line line-3"></div>
+      <span>Schließen</span>
+    </div>
+    <section class="sidebar">
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="#start" class="menu-link" data-content="Startseite">Startseite</a>
+        </li>
+        <li class="menu-item">
+          <a href="#song" class="menu-link" data-content="Alle Songs">Alle Songs</a>
+        </li>
+        <li class="menu-item">
+          <a href="#playlist" class="menu-link" data-content="Playlists">Playlists</a>
+        </li>
+        <li class="menu-item">
+          <a href="#playsite" class="menu-link" data-content="Abspielseite">Abspielseite</a>
+        </li>
+      </ul>
+    </section>
+    <!-- CONTAINER BEREICH -->
+    <div id="container">
+    </div>
+    <!--FOOTER BEREICH-->
+    <div class="footer">
+      <footer>
+        <p>Author: Henrik Effenberger</p>
+        <p><a href="mailto:heffe@example.com">heffe@example.com</a></p>
+      </footer>
+    </div>
+  </div>
+  <!--SCRIPT BEREICH-->
+  <script src="src/javascript/script.js"></script>
+  <script src="src/javascript/crawl.js"></script>
+  <script src="src/javascript/ajaxGet.js"></script>
+  <script src="src/javascript/rout.js"></script>
+  <script src="src/javascript/router.js"></script>
+  <script src="src/javascript/app.js"></script>
+  <script src="src/javascript/songlist.js"></script>
+  <script src="src/javascript/playlist.js"></script>
+
+
+
+</body>
+
+<script>
+  // ajaxGet("test.html");
+</script>
+
+</html>

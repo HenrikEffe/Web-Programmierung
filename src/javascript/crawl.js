@@ -2,6 +2,7 @@
 "use strict";
 
 function createIframe() {
+  // localStorage.clear();
   var ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", "musikframe");
   ifrm.setAttribute("src", "http://localhost/Web-Programmierung/musik");
@@ -14,7 +15,6 @@ function createIframe() {
   iframe.onload = function (event) {
     readSongs(document.getElementById("musikframe"));
   };
-  localStorage.clear();
 }
 // ausgabe des Local Storages
 // window.addEventListener("load", function () {
