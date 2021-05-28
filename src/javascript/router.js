@@ -61,6 +61,8 @@ class Router {
           } else if (currentHash == "#playlist") {
             console.log("Playlist Seite");
             getPlaylists();
+          } else if (currentHash == "#oneplaylist") {
+            getSpecificPlaylists();
           }
           window.scrollTo(0, 0);
           console.log(
