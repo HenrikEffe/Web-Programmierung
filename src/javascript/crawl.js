@@ -75,5 +75,4 @@ function myFunction() {
   while (elements.length) {
     elements[0].parentNode.removeChild(elements[0]);
   }
-
 }
