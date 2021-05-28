@@ -142,18 +142,6 @@ html {
   margin: 10px;
 }
 
-.form__input {
-  font-family: "Roboto", sans-serif;
-  color: #333;
-  font-size: 2rem;
-  margin-bottom: 10px;
-  padding: 1.5rem 2rem;
-  border-radius: 0.2rem;
-  background-color: rgb(255, 255, 255);
-  border: none;
-  width: 100%;
-  display: block;
-}
 
 .songlist ul li a {
   text-decoration: none;
@@ -230,6 +218,8 @@ html {
   z-index: 100;
 }
 
+
+
 .change .sidebar {
   right: 0;
 }
@@ -242,8 +232,59 @@ html {
 }
 
 .menu-item {
-  text-align: center;
+  display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
+.menu-item input[type=checkbox]{
+	height: 0px;
+	width: 0px;
+	visibility: hidden;
+}
+
+.menu-item label {
+  margin: 10px;
+  align-items: center;
+	cursor: pointer;
+	width: 100px;
+	height: 50px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.menu-item label:after {
+	content: '';
+	position: absolute;
+	top: 2.5px;
+	left: 2.5px;
+	width: 45px;
+	height: 45px;
+	background: #fff;
+	border-radius: 45px;
+	transition: 0.3s;
+}
+
+.menu-item input:checked + label {
+	background: #bada55;
+}
+
+.menu-item input:checked + label:after {
+	left: calc(100% - 2.5px);
+	transform: translateX(-100%);
+}
+
+.menu-item label:active:after {
+	width: 75px;
+}
+
+/* .menu-item input[type="checkbox"] {
+  height: 18px;
+  width: 18px;
+  margin: 10px;
+} */
 
 .menu-link {
   font-family: "Baloo Da 2", serif;
@@ -271,6 +312,7 @@ html {
 .message {
   bottom: 6rem;
 }
+
 
 @media (max-width: 1400px) {
   .banner h1 {
