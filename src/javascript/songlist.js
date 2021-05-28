@@ -8,7 +8,7 @@ function getSongs() {
     let song = document.createElement("li");
     var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
-    if (retrievedObject.type = "song") {
+    if (retrievedObject.type == "song") {
       var input = retrievedObject.src;
       var period = input.lastIndexOf('.');
       var slash = input.lastIndexOf('/');

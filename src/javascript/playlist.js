@@ -30,15 +30,26 @@ function getPlaylists() {
         var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
 
-        if (retrievedObject.type == "playlist") {
-            song.innerHTML = "<input type=checkbox" + "><a>" + storageKey + "</a>";
 
-            song.onclick = function () {
-                console.log("llasdasdasd" + storageKey);
+
+
+        if (retrievedObject.type == "playlist") {
+            // song.innerHTML = "<input type=checkbox" + "><a>" + storageKey + "</a>";
+            // var test = song.getElementsByTagName("input")[0].checked;
+
+
+            let inputText = document.createElement("input");
+            inputText.setAttribute("type", "checkbox");
+
+            let ref = document.createElement("a");
+            var linkText = document.createTextNode(storageKey);
+            ref.appendChild(linkText);
+            ref.onclick = function () {
                 sessionStorage.setItem('playlist', storageKey);
                 window.location.href = "OnePlaylist.html";
             };
-
+            song.appendChild(inputText);
+            song.appendChild(ref);
             lists.appendChild(song);
         }
     }
@@ -70,6 +81,34 @@ function getSpecificPlaylists() {
     }
 }
 
+
+
+function deletePlaylist() {
+    var lists = document.getElementById("playlists");
+    var items = lists.getElementsByTagName("li");
+    let songs = [];
+    for (var i = 0; i < items.length; ++i) {
+        if (items[i].getElementsByTagName("input")[0].checked) {
+            songs.push[items[i].getElementsByTagName("a")[0].innerHTML];
+        }
+    }
+    console.log(songs);
+
+    for (let i = 0; i < localStorage.length; i++) {
+        let storageKey = localStorage.key(i);
+        var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
+
+        if (retrievedObject.type == "playlist") {
+            console.log("Playlist gefunden");
+            for (let i of songs) {
+                if (i = storageKey) {
+                    localStorage.removeItem(storageKey);
+                }
+            }
+        }
+
+    }
+}
 
 
 
