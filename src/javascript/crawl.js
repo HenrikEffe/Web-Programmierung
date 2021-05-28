@@ -2,6 +2,8 @@
 "use strict";
 
 function createIframe() {
+  var theme = { type: "darkmode", src: "theme-light" };
+  localStorage.setItem("darkmode", JSON.stringify(theme));
   // localStorage.clear();
   var ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", "musikframe");
