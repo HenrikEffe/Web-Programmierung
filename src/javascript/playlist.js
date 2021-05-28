@@ -23,6 +23,7 @@ function createPlaylist() {
 
 function getPlaylists() {
     let lists = document.getElementById("playlists");
+
     for (let i = 0; i < localStorage.length; i++) {
         let storageKey = localStorage.key(i);
         let song = document.createElement("li");
@@ -30,21 +31,30 @@ function getPlaylists() {
 
 
         if (retrievedObject.type == "playlist") {
-            song.innerHTML = "<input type=checkbox" + "><a href=" + "index.html" + ">" + storageKey + "</a>";
-            // song.appendChild(button);
+            song.innerHTML = "<input type=checkbox" + "><a>" + storageKey + "</a>";
+
+            song.onclick = function () {
+                console.log("llasdasdasd" + storageKey);
+                sessionStorage.setItem('playlist', storageKey);
+                window.location.href = "OnePlaylist.html";
+            };
+
             lists.appendChild(song);
         }
     }
 }
 
-function getSpecificPlaylists(playlist) {
+function getSpecificPlaylists() {
     let lists = document.getElementById("playlists");
+    let header = document.getElementById("header");
+    let item = sessionStorage.getItem("playlist");
+    header.innerHTML = item;
     for (let i = 0; i < localStorage.length; i++) {
         let storageKey = localStorage.key(i);
 
         var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
-        if (retrievedObject.type == "playlist" && storageKey == playlist) {
+        if (retrievedObject.type == "playlist" && storageKey == item) {
             var a = retrievedObject.src.split(";");
 
             for (let b = 0; b < a.length - 1; b++) {
@@ -59,6 +69,7 @@ function getSpecificPlaylists(playlist) {
         }
     }
 }
+
 
 
 
