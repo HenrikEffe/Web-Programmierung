@@ -168,6 +168,26 @@ footer {
   color: black;
 }
 
+.imprint{
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  font-family: "Josefin Slab", serif;
+  font-size: 2rem;
+  color: white;
+  letter-spacing: 0.1rem;
+  margin-bottom: 3rem;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  animation: moveBanner 1s 0.7s forwards;
+}
+
+.space{
+margin-top: 5%;
+margin-bottom: 5%;
+}
+
+
 .songlist {
   position: absolute;
   top: 10%;
