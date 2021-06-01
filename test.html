@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Blood Coders</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <style>
+        .container {
+            position: relative;
+            background-color: #fff;
+            height: 160px;
+            width: 85vw;
+            max-width: 400px;
+            -webkit-box-shadow: 0 4px 10px #f9768542;
+            box-shadow: 0 4px 10px #f9768542;
+            border-radius: 5px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-right: 1rem;
+            background-color: #a2a4ee;
+        }
+
+        .bg {
+            position: absolute;
+            width: 100px;
+            height: 120%;
+            background-color: var(--accent);
+            left: -20px;
+            -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+            z-index: -1;
+        }
+
+        .flex-item-1 {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 40%;
+            flex: 0 0 40%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 0 1rem;
+            overflow: hidden;
+            border-radius: 5px;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            min-width: 150px;
+        }
+
+        .cover {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            background: red;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            -webkit-box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .flex-item-2 {
+            position: relative;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+        }
+
+        .info-holder {
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .song {
+            font-size: 1.2em;
+        }
+
+        .artist {
+            color: #3b3b3b;
+            font-size: 0.7em;
+        }
+
+        .progress {
+            position: relative;
+            height: 1.5rem;
+        }
+
+        .duration {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 0.6em;
+            color: var(--accent);
+        }
+
+        .bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            height: 2px;
+        }
+
+        .bar::after {
+            content: "";
+            position: absolute;
+            background-color: black;
+            height: 100%;
+            width: 30%;
+        }
+
+        .bar::before {
+            position: absolute;
+            content: "";
+            height: 8px;
+            width: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            z-index: 1;
+            top: -3px;
+            left: 28%;
+        }
+
+        .controls-holder {
+            margin-top: 1rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        .controls {
+            color: var(--accent);
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .pause {
+            font-size: 1.8em;
+            padding: 0 1rem;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <audio id="player" preload="auto" loop>
+        <source id="audio-source"
+            src="C:/Users/timsc/Documents/GitHub/Web-Programmierung/musik/15%20Bonnie%20Tyler%20-%20Holding%20Out%20For%20A%20Hero.mp3"
+            type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+
+
+
+        <div class="flex-item-1">
+            <div class="cover"></div>
+            <div class="bg"></div>
+        </div>
+
+        <div class="flex-item-2">
+
+            <div class="info-holder">
+                <div class="song">Lily</div>
+                <div class="artist">Alan Walker</div>
+
+                <div class="progress">
+                    <div class="duration">01:28/03:55</div>
+                    <div class="bar"></div>
+                </div>
+
+                <div class="controls-holder">
+                    <div class="controls">
+                        <i class="ri-rewind-fill"></i>
+                        <i class="ri-play-circle-line pause"></i>
+                        <i class="ri-speed-fill"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    let isPlaying = false;
+
+    window.onload = () => {
+        const player = document
+            .getElementById('player');
+
+        const playBtn = document
+            .querySelector('.pause');
+
+        playBtn.addEventListener('click', () => {
+
+            if (!isPlaying) {
+                playBtn.classList.remove('ri-play-circle-line');
+                playBtn.classList.add('ri-pause-circle-line');
+                player.play();
+                isPlaying = true;
+            } else {
+                playBtn.classList.remove('ri-pause-circle-line');
+                playBtn.classList.add('ri-play-circle-line');
+                player.pause();
+                isPlaying = false;
+            }
+
+        });
+
+    }
+</script>
