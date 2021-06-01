@@ -40,7 +40,7 @@ body {
     "ft";
   overflow: hidden;
   height: 100vh;
-  margin-bottom: 800px;
+  margin-bottom: 850px;
 }
 .footer {
   grid-area: ft;
