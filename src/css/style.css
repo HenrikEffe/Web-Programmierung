@@ -180,6 +180,7 @@ footer {
   text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
   opacity: 0;
   animation: moveBanner 1s 0.7s forwards;
+
 }
 
 .space{
@@ -187,6 +188,10 @@ margin-top: 5%;
 margin-bottom: 5%;
 }
 
+.space p a{
+  text-decoration: none;
+  color: white;
+}
 
 .songlist {
   position: absolute;

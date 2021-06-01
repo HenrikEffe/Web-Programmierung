@@ -85,12 +85,9 @@ function deletePlaylist() {
   let songs = new Array();
   for (var i = 0; i < items.length; ++i) {
     if (items[i].getElementsByTagName("input")[0].checked) {
-      console.log(items[i].getElementsByTagName("input")[0].checked);
-      console.log(items[i].getElementsByTagName("a")[0].innerHTML);
       songs.push(items[i].getElementsByTagName("a")[0].innerHTML);
     }
   }
-  console.log(songs);
 
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
@@ -105,4 +102,6 @@ function deletePlaylist() {
       }
     }
   }
+
+  location.reload();
 }
