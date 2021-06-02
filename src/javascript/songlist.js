@@ -12,8 +12,12 @@ function getSongs() {
     var songname = input.substring(slash + 1, period);
     var songname = songname.replace(/%20/g, " ");
 
+    let labelText = document.createElement("label");
     let inputText = document.createElement("input");
+    let spanText = document.createElement("span");
+    labelText.setAttribute("class", "checkerSong")
     inputText.setAttribute("type", "checkbox");
+    spanText.setAttribute("class", "checkmark")
 
     let ref = document.createElement("a");
     ref.setAttribute("title", input);
@@ -37,6 +41,11 @@ function getSongs() {
     song.appendChild(inputText);
     song.appendChild(ref);
     lists.appendChild(song);
+   
+
+        //"<label class=checkerSong><input type=checkbox ><span class=checkmark></span></label> <a title=" + input + ">" + songname + "</a>";
+
+    
   }
 }
 
