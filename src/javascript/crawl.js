@@ -21,6 +21,7 @@ function createIframe() {
 // ausgabe des Local Storages
 // window.addEventListener("load", function () {
 // myFunction();
+allSongs();
 for (let i = 0; i < localStorage.length; i++) {
   let storageKey = localStorage.key(i);
   var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
@@ -73,6 +74,22 @@ async function readSongs(iframe) {
   var slash = name.lastIndexOf("/", name.lastIndexOf("/") - 1);
   name = name.substring(slash + 1, name.lastIndexOf("/"));
   localStorage.setItem(name, JSON.stringify(playlistObj));
+}
+
+function allSongs() {
+  var playlistObj = { type: "playlist", songs: [] };
+  for (let i = 0; i < localStorage.length; i++) {
+    let storageKey = localStorage.key(i);
+    var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
+    if (retrievedObject.type == "playlist") {
+      var array = retrievedObject.songs;
+      for (let y = 0; y < array.length; y++) {
+        var objectSong = JSON.parse(array[y]);
+        playlistObj["songs"].push(JSON.stringify(objectSong));
+      }
+    }
+  }
+  localStorage.setItem("Alle Songs", JSON.stringify(playlistObj));
 }
 
 function myFunction() {
