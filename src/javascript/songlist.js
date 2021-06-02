@@ -3,36 +3,30 @@
 
 function getSongs() {
   let lists = document.getElementById("songliste");
-  console.log(lists);
-  for (let i = 0; i < localStorage.length; i++) {
-    let storageKey = localStorage.key(i);
+  var songs = JSON.parse(localStorage.getItem("Alle Songs"));
+  for (let i = 0; i < songs.songs.length; i++) {
     let song = document.createElement("li");
-    var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
+    var retrievedObject = JSON.parse(songs.songs[i]);
     let input = retrievedObject.src;
+    var period = input.lastIndexOf(".");
+    var slash = input.lastIndexOf("/");
+    var songname = input.substring(slash + 1, period);
+    var songname = songname.replace(/%20/g, " ");
+    song.innerHTML =
+      "<input type=checkbox" + "><a title=" + input + ">" + songname + "</a>";
+    song.addEventListener("click", function playSong() {
+      var source = document.getElementById("standardAudioSrc");
+      var audio = document.getElementById("standardAudio");
 
-    if (retrievedObject.type == "song") {
-      var period = input.lastIndexOf(".");
-      var slash = input.lastIndexOf("/");
-      var songname = input.substring(slash + 1, period);
-      var songname = songname.replace(/%20/g, " ");
-      song.innerHTML =
-        "<input type=checkbox" + "><a title=" + input + ">" + songname + "</a>";
-      song.addEventListener("click", function playSong() {
-        console.log(storageKey, "akdjfghakljsfhdalsdfjhakljdf", input);
+      var obj = { type: "playedsong", current: "allsongs", src: storageKey };
+      localStorage.setItem("playedsong", JSON.stringify(obj));
 
-        var source = document.getElementById("standardAudioSrc");
-        var audio = document.getElementById("standardAudio");
+      source.src = input;
 
-        var obj = { type: "playedsong", current: "allsongs", src: storageKey };
-        localStorage.setItem("playedsong", JSON.stringify(obj));
-
-        source.src = input;
-
-        audio.load();
-        audio.play();
-      });
-      lists.appendChild(song);
-    }
+      audio.load();
+      audio.play();
+    });
+    lists.appendChild(song);
   }
 }
 function prevSong() {}

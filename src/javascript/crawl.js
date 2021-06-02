@@ -77,6 +77,9 @@ async function readSongs(iframe) {
 }
 
 function allSongs() {
+  if (localStorage.getItem("Alle Songs") != undefined) {
+    localStorage.removeItem("Alle Songs");
+  }
   var playlistObj = { type: "playlist", songs: [] };
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
