@@ -44,7 +44,6 @@ async function readFolder(source) {
 }
 async function readSongs(iframe) {
   var iframebody = iframe.contentWindow.document.querySelector("table").rows;
-  console.log(iframebody.length);
   var playlistObj = { type: "playlist", songs: [] };
   for (var key = 0; key < iframebody.length; key++) {
     var select = iframebody[key].querySelector("a");
