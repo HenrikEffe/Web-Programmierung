@@ -18,6 +18,8 @@ function getSongs() {
     labelText.setAttribute("class", "checkerSong")
     inputText.setAttribute("type", "checkbox");
     spanText.setAttribute("class", "checkmark")
+    labelText.appendChild(inputText);
+    labelText.appendChild(spanText);
 
     let ref = document.createElement("a");
     ref.setAttribute("title", input);
@@ -38,14 +40,9 @@ function getSongs() {
       audio.play();
     });
 
-    song.appendChild(inputText);
+    song.appendChild(labelText);
     song.appendChild(ref);
     lists.appendChild(song);
-   
-
-        //"<label class=checkerSong><input type=checkbox ><span class=checkmark></span></label> <a title=" + input + ">" + songname + "</a>";
-
-    
   }
 }
 
