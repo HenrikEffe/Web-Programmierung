@@ -8,15 +8,20 @@ function createPlaylist() {
   if (playlistName == "") {
     alert("Geben Sie zuerst einen Namen ein");
   } else {
-    let songs = "";
+    var songs = { type: "playlist", songs: [] };
     for (var i = 0; i < items.length; ++i) {
       console.log(items[i].getElementsByTagName("input")[0].checked);
       if (items[i].getElementsByTagName("input")[0].checked) {
-        songs = songs + items[i].getElementsByTagName("a")[0].innerHTML + ";";
+        var obj = {
+          type: "song",
+          src: items[i].getElementsByTagName("a")[0].innerHTML,
+        };
+        songs["songs"].push(JSON.stringify(obj));
+        // songs = songs + items[i].getElementsByTagName("a")[0].innerHTML + ";";
       }
     }
-    var obj = { type: "playlist", src: songs };
-    localStorage.setItem(playlistName, JSON.stringify(obj));
+    // var obj = { type: "playlist", src: songs };
+    localStorage.setItem(playlistName, JSON.stringify(songs));
   }
 }
 
@@ -60,17 +65,35 @@ function getSpecificPlaylists() {
     var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
     if (retrievedObject.type == "playlist" && storageKey == item) {
-      var a = retrievedObject.src.split(";");
-
-      for (let b = 0; b < a.length - 1; b++) {
+      // var a = retrievedObject.src.split(";");
+      var array = retrievedObject.songs;
+      for (let b = 0; b < array.length - 1; b++) {
         let song = document.createElement("li");
-        song.innerHTML =
-          "<input type=checkbox" +
-          "><a href=" +
-          "index.html" +
-          ">" +
-          a[b] +
-          "</a>";
+        var objectSong = JSON.parse(array[b]);
+        console.log(objectSong);
+        console.log("src: ", objectSong.src);
+        if (objectSong.type == "song") {
+          console.log("Ich bin drin!");
+          var input = objectSong.src;
+          var period = input.lastIndexOf(".");
+          var slash = input.lastIndexOf("/");
+          var songname = input.substring(slash + 1, period);
+          var songname = songname.replace(/%20/g, " ");
+          song.innerHTML =
+            "<input type=checkbox" +
+            "><a href=" +
+            "index.html" +
+            ">" +
+            songname +
+            "</a>";
+        }
+        // song.innerHTML =
+        //   "<input type=checkbox" +
+        //   "><a href=" +
+        //   "index.html" +
+        //   ">" +
+        //   array[b] +
+        //   "</a>";
         // song.appendChild(button);
         lists.appendChild(song);
         console.log(song);

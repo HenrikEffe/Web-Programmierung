@@ -44,18 +44,17 @@ async function readFolder(source) {
 async function readSongs(iframe) {
   var iframebody = iframe.contentWindow.document.querySelector("table").rows;
   console.log(iframebody.length);
+  var playlistObj = { type: "playlist", songs: [] };
   for (var key = 0; key < iframebody.length; key++) {
     var select = iframebody[key].querySelector("a");
-
     if (
       select != null &&
       (select.toString().includes(".mp3") || select.toString().includes(".ogg"))
     ) {
       // Musik in Webstorage speichern (ohne Ordner Zuweisung)
       if (typeof Storage !== "undefined") {
-        // setItem("Titel", "Link")
-        console.log("ich schreibe");
         var obj = { type: "song", src: select.toString() };
+        playlistObj["songs"].push(JSON.stringify(obj));
         localStorage.setItem(select.textContent, JSON.stringify(obj));
       } else {
         allert("Sorry! No Web Storage support...");
@@ -70,10 +69,14 @@ async function readSongs(iframe) {
       readFolder(select);
     }
   }
+  var name = iframe.src;
+  var slash = name.lastIndexOf("/", name.lastIndexOf("/") - 1);
+  name = name.substring(slash + 1, name.lastIndexOf("/"));
+  localStorage.setItem(name, JSON.stringify(playlistObj));
 }
+
 function myFunction() {
   var elements = document.getElementsByTagName("iframe");
-
   while (elements.length) {
     elements[0].parentNode.removeChild(elements[0]);
   }

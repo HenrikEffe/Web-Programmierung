@@ -2,13 +2,6 @@
 "use strict";
 
 function getSongs() {
-  console.log("ich bin da");
-  for (let i = 0; i < localStorage.length; i++) {
-    let storageKey = localStorage.key(i);
-    var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
-    console.log(storageKey + " : " + retrievedObject.type);
-  }
-
   let lists = document.getElementById("songliste");
   console.log(lists);
   for (let i = 0; i < localStorage.length; i++) {
