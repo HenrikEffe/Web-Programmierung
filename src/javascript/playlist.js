@@ -85,6 +85,7 @@ function deletePlaylist() {
   let songs = new Array();
   for (var i = 0; i < items.length; ++i) {
     if (items[i].getElementsByTagName("input")[0].checked) {
+      console.log(items[i] + items[i].getElementsByTagName("a")[0].innerHTML);
       songs.push(items[i].getElementsByTagName("a")[0].innerHTML);
     }
   }
@@ -93,13 +94,9 @@ function deletePlaylist() {
     let storageKey = localStorage.key(i);
     var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
-    if (retrievedObject.type == "playlist") {
+    if (retrievedObject.type == "playlist" && songs.includes(storageKey)) {
       console.log("Playlist gefunden");
-      for (let i of songs) {
-        if ((i = storageKey)) {
-          localStorage.removeItem(storageKey);
-        }
-      }
+      localStorage.removeItem(storageKey);
     }
   }
 
