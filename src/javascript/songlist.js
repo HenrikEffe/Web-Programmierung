@@ -31,7 +31,7 @@ function getSongs() {
       var source = document.getElementById("standardAudioSrc");
       var audio = document.getElementById("standardAudio");
 
-      var obj = { type: "playedsong", current: songs, src: songname, key: i };
+      var obj = { type: "playedsong", current: JSON.stringify(songs), src: songname, key: i };
       localStorage.setItem("playedsong", JSON.stringify(obj));
 
       source.src = input;
