@@ -84,12 +84,8 @@ function allSongs() {
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
     var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
-    if (retrievedObject.type == "playlist") {
-      var array = retrievedObject.songs;
-      for (let y = 0; y < array.length; y++) {
-        var objectSong = JSON.parse(array[y]);
-        playlistObj["songs"].push(JSON.stringify(objectSong));
-      }
+    if (retrievedObject.type == "song") {
+      playlistObj["songs"].push(JSON.stringify(retrievedObject));
     }
   }
   localStorage.setItem("Alle Songs", JSON.stringify(playlistObj));

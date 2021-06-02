@@ -18,7 +18,7 @@ function getSongs() {
       var source = document.getElementById("standardAudioSrc");
       var audio = document.getElementById("standardAudio");
 
-      var obj = { type: "playedsong", current: "allsongs", src: storageKey };
+      var obj = { type: "playedsong", current: "allsongs", src: songname, key: i };
       localStorage.setItem("playedsong", JSON.stringify(obj));
 
       source.src = input;
@@ -29,35 +29,66 @@ function getSongs() {
     lists.appendChild(song);
   }
 }
-function prevSong() {}
-function nextSong() {
-  let retrievedObject = JSON.parse(localStorage.getItem("playedsong"));
 
-  if (retrievedObject.current == "allsongs") {
-    for (let i = 0; i < localStorage.length; i++) {
-      let storageKey = localStorage.key(i);
-      //let loopObject = JSON.parse(localStorage.getItem(storageKey));
+function prevSong() {
+  let allsongs = JSON.parse(localStorage.getItem("Alle Songs"));
+  let index = JSON.parse(localStorage.getItem("playedsong"));
+  let indexValue = "";
 
-      if (retrievedObject.src == storageKey) {
-        let loopObject = "";
-        do {
-          i = i + 1;
-          storageKey = localStorage.key(i);
-          loopObject = JSON.parse(localStorage.getItem(storageKey));
-          console.log(storageKey + "adasdad");
-        } while (loopObject.type != "song");
-        storageKey = localStorage.key(i);
-        let source = document.getElementById("standardAudioSrc");
-        let audio = document.getElementById("standardAudio");
-
-        var obj = { type: "playedsong", current: "allsongs", src: storageKey };
-        localStorage.setItem("playedsong", JSON.stringify(obj));
-
-        source.src = loopObject.src;
-
-        audio.load();
-        audio.play();
-      }
-    }
+  if (index.key == 0) {
+    indexValue = allsongs.songs.length - 1;
+  } else {
+    indexValue = index.key - 1;
   }
+
+  var song = JSON.parse(allsongs.songs[indexValue]);
+
+  var period = song.src.lastIndexOf(".");
+  var slash = song.src.lastIndexOf("/");
+  var songname = song.src.substring(slash + 1, period);
+  var songname = songname.replace(/%20/g, " ");
+
+  let source = document.getElementById("standardAudioSrc");
+  let audio = document.getElementById("standardAudio");
+
+  var obj = { type: "playedsong", current: "allsongs", src: songname, key: indexValue };
+  localStorage.setItem("playedsong", JSON.stringify(obj));
+
+  source.src = song.src;
+
+  audio.load();
+  audio.play();
+
+}
+
+
+
+function nextSong() {
+  let allsongs = JSON.parse(localStorage.getItem("Alle Songs"));
+  let index = JSON.parse(localStorage.getItem("playedsong"));
+  let indexValue = "";
+
+  if (index.key + 1 == allsongs.songs.length) {
+    indexValue = 0;
+  } else {
+    indexValue = index.key + 1;
+  }
+
+  var song = JSON.parse(allsongs.songs[indexValue]);
+
+  var period = song.src.lastIndexOf(".");
+  var slash = song.src.lastIndexOf("/");
+  var songname = song.src.substring(slash + 1, period);
+  var songname = songname.replace(/%20/g, " ");
+
+  let source = document.getElementById("standardAudioSrc");
+  let audio = document.getElementById("standardAudio");
+
+  var obj = { type: "playedsong", current: "allsongs", src: songname, key: indexValue };
+  localStorage.setItem("playedsong", JSON.stringify(obj));
+
+  source.src = song.src;
+
+  audio.load();
+  audio.play();
 }
