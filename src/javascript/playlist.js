@@ -36,8 +36,14 @@ function getPlaylists() {
       // song.innerHTML = "<input type=checkbox" + "><a>" + storageKey + "</a>";
       // var test = song.getElementsByTagName("input")[0].checked;
 
-      let inputText = document.createElement("input");
-      inputText.setAttribute("type", "checkbox");
+    let labelText = document.createElement("label");
+    let inputText = document.createElement("input");
+    let spanText = document.createElement("span");
+    labelText.setAttribute("class", "checkerSong")
+    inputText.setAttribute("type", "checkbox");
+    spanText.setAttribute("class", "checkmark")
+    labelText.appendChild(inputText);
+    labelText.appendChild(spanText);
 
       let ref = document.createElement("a");
       var linkText = document.createTextNode(storageKey);
@@ -46,7 +52,7 @@ function getPlaylists() {
         sessionStorage.setItem("playlist", storageKey);
         window.location.href = "#oneplaylist";
       };
-      song.appendChild(inputText);
+      song.appendChild(labelText);
       song.appendChild(ref);
       lists.appendChild(song);
     }
