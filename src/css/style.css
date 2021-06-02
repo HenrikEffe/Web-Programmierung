@@ -441,6 +441,12 @@ footer {
   width: 30%;
 }
 
+.music-content audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-panel {
+background-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);
+}
+
 .song-title {
   padding: 5px;
   font-weight: 600;
@@ -473,6 +479,10 @@ footer {
    .music-content audio{
     width: 40%;
   }
+
+
+
+  
   
 
 
