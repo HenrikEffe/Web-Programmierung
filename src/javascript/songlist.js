@@ -2,13 +2,6 @@
 "use strict";
 
 function getSongs() {
-  console.log("ich bin da");
-  for (let i = 0; i < localStorage.length; i++) {
-    let storageKey = localStorage.key(i);
-    var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
-    console.log(storageKey + " : " + retrievedObject.type);
-  }
-
   let lists = document.getElementById("songliste");
   console.log(lists);
   for (let i = 0; i < localStorage.length; i++) {
@@ -27,27 +20,70 @@ function getSongs() {
         "><a>" +
         songname +
         "</a>";
-        song.addEventListener("click", function playSong(){
-          console.log(storageKey, "akdjfghakljsfhdalsdfjhakljdf", input);
+      song.addEventListener("click", function playSong() {
+        console.log(storageKey, "akdjfghakljsfhdalsdfjhakljdf", input);
 
-          var source = document.getElementById('standardAudioSrc');
-          var audio = document.getElementById('standardAudio');
-          
-          var obj = { type: "playedsong", src: retrievedObject.src };
-          localStorage.setItem("playedsong", JSON.stringify(obj));
+        var source = document.getElementById('standardAudioSrc');
+        var audio = document.getElementById('standardAudio');
 
-          source.src = input;
+        var obj = { type: "playedsong", current: "allsongs", src: storageKey };
+        localStorage.setItem("playedsong", JSON.stringify(obj));
 
-            audio.load();
-            audio.play();
-        });
+        source.src = input;
+
+        audio.load();
+        audio.play();
+      });
       lists.appendChild(song);
     }
   }
 }
-function prevSong(){
+function prevSong() {
+
+
+
 
 }
-function nextSong(){
-  
+function nextSong() {
+  let retrievedObject = JSON.parse(localStorage.getItem("playedsong"));
+
+
+
+  if (retrievedObject.current == "allsongs") {
+    for (let i = 0; i < localStorage.length; i++) {
+      let storageKey = localStorage.key(i);
+      //let loopObject = JSON.parse(localStorage.getItem(storageKey));
+
+      if (retrievedObject.src == storageKey) {
+        let loopObject = "";
+        do {
+          i = i + 1;
+          storageKey = localStorage.key(i);
+          loopObject = JSON.parse(localStorage.getItem(storageKey));
+          console.log(storageKey + "adasdad");
+        } while (loopObject.type != "song")
+        storageKey = localStorage.key(i);
+        let source = document.getElementById('standardAudioSrc');
+        let audio = document.getElementById('standardAudio');
+
+        var obj = { type: "playedsong", current: "allsongs", src: storageKey };
+        localStorage.setItem("playedsong", JSON.stringify(obj));
+
+        source.src = loopObject.src;
+
+        audio.load();
+        audio.play();
+
+
+
+      }
+
+
+    }
+
+
+  }
+
+
+
 }
