@@ -48,9 +48,7 @@ function getSongs() {
 
 function prevSong() {
   let index = JSON.parse(localStorage.getItem("playedsong"));
-  console.log(index, "PrevSong");
   let allsongs = JSON.parse(index.current);
-  console.log(allsongs);
   let indexValue = "";
 
   if (index.key == 0) {
@@ -69,7 +67,7 @@ function prevSong() {
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
 
-  var obj = { type: "playedsong", current: "allsongs", src: songname, key: indexValue };
+  var obj = { type: "playedsong", current: index.current, src: songname, key: indexValue };
   localStorage.setItem("playedsong", JSON.stringify(obj));
 
   source.src = song.src;
@@ -81,8 +79,8 @@ function prevSong() {
 
 
 function nextSong() {
-  let allsongs = JSON.parse(localStorage.getItem("Alle Songs"));
   let index = JSON.parse(localStorage.getItem("playedsong"));
+  let allsongs = JSON.parse(index.current);
   let indexValue = "";
 
   if (index.key + 1 == allsongs.songs.length) {
@@ -101,7 +99,7 @@ function nextSong() {
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
 
-  var obj = { type: "playedsong", current: "allsongs", src: songname, key: indexValue };
+  var obj = { type: "playedsong", current: index.current, src: songname, key: indexValue };
   localStorage.setItem("playedsong", JSON.stringify(obj));
 
   source.src = song.src;
