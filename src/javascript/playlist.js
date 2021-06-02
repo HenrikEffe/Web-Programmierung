@@ -10,7 +10,6 @@ function createPlaylist() {
   } else {
     var songs = { type: "playlist", songs: [] };
     for (var i = 0; i < items.length; ++i) {
-      console.log(items[i].getElementsByTagName("input")[0].checked);
       if (items[i].getElementsByTagName("input")[0].checked) {
         var obj = {
           type: "song",
@@ -61,7 +60,6 @@ function getSpecificPlaylists() {
   header.innerHTML = item;
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
-
     var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
     if (retrievedObject.type == "playlist" && storageKey == item) {
@@ -70,10 +68,7 @@ function getSpecificPlaylists() {
       for (let b = 0; b < array.length; b++) {
         let song = document.createElement("li");
         var objectSong = JSON.parse(array[b]);
-        console.log(objectSong);
-        console.log("src: ", objectSong.src);
         if (objectSong.type == "song") {
-          console.log("Ich bin drin!");
           var input = objectSong.src;
           if (input.includes(".mp3")) {
           }
