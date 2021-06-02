@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title>BossBerGer</title>
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="src/css/style.css" />
 </head>
 
@@ -41,8 +42,23 @@
     <!--FOOTER BEREICH-->
     <div class="footer">
       <footer>
-        <p>Author: Henrik Effenberger</p>
-        <p><a href="mailto:heffe@example.com">heffe@example.com</a></p>
+        <div class="music-app">
+          <div class="music-content">
+            <div class="music-album">
+              <p class="song-title">Testsong</p>
+              <p class="artist">Testartist</p>
+            </div>
+            <button onclick="prevSong()" id="songbutton"><i class='bx bx-skip-previous-circle'></i></button>
+            <audio controls>
+              <source src="C:/xampp/htdocs/Web-Programmierung/musik/02%20-%20Robbie%20Williams%20-%20Angels.mp3"
+                type="audio/mpeg">
+              Your browser does not support the audio tag.
+            </audio>
+
+            <button onclick="nextSong()" id="songbutton"><i class='bx bx-skip-next-circle'></i></button>
+            <div class="animation"><br><br><br></div>
+          </div>
+        </div>
       </footer>
     </div>
   </div>
