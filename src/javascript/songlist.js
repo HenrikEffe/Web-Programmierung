@@ -6,15 +6,22 @@ function getSongs() {
   var songs = JSON.parse(localStorage.getItem("Alle Songs"));
   for (let i = 0; i < songs.songs.length; i++) {
     let song = document.createElement("li");
-    var retrievedObject = JSON.parse(songs.songs[i]);
-    let input = retrievedObject.src;
+    let input = JSON.parse(songs.songs[i]).src;
     var period = input.lastIndexOf(".");
     var slash = input.lastIndexOf("/");
     var songname = input.substring(slash + 1, period);
     var songname = songname.replace(/%20/g, " ");
-    song.innerHTML =
-      "<input type=checkbox" + "><a title=" + input + ">" + songname + "</a>";
-    song.addEventListener("click", function playSong() {
+
+    let inputText = document.createElement("input");
+    inputText.setAttribute("type", "checkbox");
+
+    let ref = document.createElement("a");
+    ref.setAttribute("title", input);
+
+    var linkText = document.createTextNode(songname);
+    ref.appendChild(linkText);
+
+    ref.addEventListener("click", function playSong() {
       var source = document.getElementById("standardAudioSrc");
       var audio = document.getElementById("standardAudio");
 
@@ -26,6 +33,9 @@ function getSongs() {
       audio.load();
       audio.play();
     });
+
+    song.appendChild(inputText);
+    song.appendChild(ref);
     lists.appendChild(song);
   }
 }
@@ -58,7 +68,6 @@ function prevSong() {
 
   audio.load();
   audio.play();
-
 }
 
 
