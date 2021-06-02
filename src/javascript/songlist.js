@@ -15,22 +15,39 @@ function getSongs() {
     let storageKey = localStorage.key(i);
     let song = document.createElement("li");
     var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
+    let input = retrievedObject.src;
 
     if (retrievedObject.type == "song") {
-      var input = retrievedObject.src;
       var period = input.lastIndexOf(".");
       var slash = input.lastIndexOf("/");
       var songname = input.substring(slash + 1, period);
       var songname = songname.replace(/%20/g, " ");
       song.innerHTML =
         "<input type=checkbox" +
-        "><a href=" +
-        "index.html" +
-        ">" +
+        "><a>" +
         songname +
         "</a>";
-      // song.appendChild(button);
+        song.addEventListener("click", function playSong(){
+          console.log(storageKey, "akdjfghakljsfhdalsdfjhakljdf", input);
+
+          var source = document.getElementById('standardAudioSrc');
+          var audio = document.getElementById('standardAudio');
+          
+          var obj = { type: "playedsong", src: retrievedObject.src };
+          localStorage.setItem("playedsong", JSON.stringify(obj));
+
+          source.src = input;
+
+            audio.load();
+            audio.play();
+        });
       lists.appendChild(song);
     }
   }
+}
+function prevSong(){
+
+}
+function nextSong(){
+  
 }
