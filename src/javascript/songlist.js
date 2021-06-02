@@ -16,15 +16,12 @@ function getSongs() {
       var songname = input.substring(slash + 1, period);
       var songname = songname.replace(/%20/g, " ");
       song.innerHTML =
-        "<input type=checkbox" +
-        "><a>" +
-        songname +
-        "</a>";
+        "<input type=checkbox" + "><a title=" + input + ">" + songname + "</a>";
       song.addEventListener("click", function playSong() {
         console.log(storageKey, "akdjfghakljsfhdalsdfjhakljdf", input);
 
-        var source = document.getElementById('standardAudioSrc');
-        var audio = document.getElementById('standardAudio');
+        var source = document.getElementById("standardAudioSrc");
+        var audio = document.getElementById("standardAudio");
 
         var obj = { type: "playedsong", current: "allsongs", src: storageKey };
         localStorage.setItem("playedsong", JSON.stringify(obj));
@@ -38,16 +35,9 @@ function getSongs() {
     }
   }
 }
-function prevSong() {
-
-
-
-
-}
+function prevSong() {}
 function nextSong() {
   let retrievedObject = JSON.parse(localStorage.getItem("playedsong"));
-
-
 
   if (retrievedObject.current == "allsongs") {
     for (let i = 0; i < localStorage.length; i++) {
@@ -61,10 +51,10 @@ function nextSong() {
           storageKey = localStorage.key(i);
           loopObject = JSON.parse(localStorage.getItem(storageKey));
           console.log(storageKey + "adasdad");
-        } while (loopObject.type != "song")
+        } while (loopObject.type != "song");
         storageKey = localStorage.key(i);
-        let source = document.getElementById('standardAudioSrc');
-        let audio = document.getElementById('standardAudio');
+        let source = document.getElementById("standardAudioSrc");
+        let audio = document.getElementById("standardAudio");
 
         var obj = { type: "playedsong", current: "allsongs", src: storageKey };
         localStorage.setItem("playedsong", JSON.stringify(obj));
@@ -73,17 +63,7 @@ function nextSong() {
 
         audio.load();
         audio.play();
-
-
-
       }
-
-
     }
-
-
   }
-
-
-
 }
