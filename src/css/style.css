@@ -42,7 +42,28 @@ body {
   height: 100vh;
   margin-bottom: 850px;
 }
+#thefile {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
 
+#canvas {
+  /* background-color: #b2b9c7; */
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 15%;
+}
+
+standardAudio {
+  position: fixed;
+  margin: auto;
+  bottom: 6em;
+  width: calc(100% - 20px);
+}
 #container {
   grid-area: main;
   position: relative;
@@ -152,7 +173,7 @@ body {
   color: black;
 }
 
-.imprint{
+.imprint {
   position: absolute;
   top: 15%;
   left: 15%;
@@ -164,15 +185,14 @@ body {
   text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
   opacity: 0;
   animation: moveBanner 1s 0.7s forwards;
-
 }
 
-.space{
-margin-top: 5%;
-margin-bottom: 5%;
+.space {
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
-.space p a{
+.space p a {
   text-decoration: none;
   color: white;
 }
@@ -267,13 +287,14 @@ margin-bottom: 5%;
   animation: moveBanner 1s 0.7s forwards;
 }
 
-#songbutton{
+#songbutton {
+  position: relative;
+  z-index: 2;
   font-size: 3rem;
   border: none;
   cursor: pointer;
   background-color: white;
- }
-
+}
 
 @keyframes moveBanner {
   0% {
@@ -421,9 +442,8 @@ footer {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   height: 15%;
-  width: 100%; 
+  width: 100%;
 }
-
 
 .music-album {
   text-align: center;
@@ -437,14 +457,14 @@ footer {
   justify-content: space-around;
 }
 
-.music-content audio{
+.music-content audio {
   width: 30%;
 }
 
 .music-content audio::-webkit-media-controls-play-button,
 audio::-webkit-media-controls-panel {
-background-color: rgb(255, 255, 255);
-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .song-title {
@@ -457,7 +477,7 @@ color: rgb(255, 255, 255);
   color: #b2b9c7;
 }
 
-.animation{
+.animation {
   background-color: lightblue;
   width: 30%;
 }
@@ -472,21 +492,15 @@ color: rgb(255, 255, 255);
 }
 
 @media (max-width: 1000px) {
-  #songbutton{
+  #songbutton {
     font-size: 2rem;
-   }
+  }
 
-   .music-content audio{
+  .music-content audio {
     width: 40%;
   }
 
-
-
-  
-  
-
-
-  .animation{
+  .animation {
     background-color: lightblue;
     width: 10%;
   }

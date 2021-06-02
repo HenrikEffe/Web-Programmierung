@@ -42,24 +42,22 @@
     <!--FOOTER BEREICH-->
     <div class="footer">
       <footer>
-        <div class="music-app">
-          <div class="music-content">
-            <div class="music-album">
-              <p class="song-title">Testsong</p>
-              <p class="artist">Testartist</p>
-            </div>
-            <button onclick="prevSong()" id="songbutton"><i class='bx bx-skip-previous-circle'></i></button>
-            
-            <audio controls id="standardAudio">
-              <source id="standardAudioSrc" src=""
-                type="audio/mpeg">
-              Your browser does not support the audio tag.
-            </audio>
+        <canvas id="canvas"></canvas>
 
-            <button onclick="nextSong()" id="songbutton"><i class='bx bx-skip-next-circle'></i></button>
-            <div class="animation"><br><br><br></div>
-          </div>
-        </div>
+        <p class="song-title">Testsong</p>
+        <p class="artist">Testartist</p>
+
+        <button onclick="prevSong()" id="songbutton"><i class='bx bx-skip-previous-circle'></i></button>
+        <audio id="standardAudio" controls>
+          <source id="standardAudioSrc" src="" type="audio/mpeg">
+          Your browser does not support the audio tag.
+        </audio>
+        <button onclick="nextSong()" id="songbutton"><i class='bx bx-skip-next-circle'></i></button>
+
+        <!-- <input type="file" id="thefile" accept="audio/*" /> -->
+
+        <!-- <audio id="audio" controls></audio> -->
+
       </footer>
     </div>
   </div>
@@ -73,6 +71,7 @@
   <script src="src/javascript/songlist.js"></script>
   <script src="src/javascript/playlist.js"></script>
   <script src="src/javascript/themes.js"></script>
+  <script src="src/javascript/animation.js"></script>
 </body>
 
 </html>
