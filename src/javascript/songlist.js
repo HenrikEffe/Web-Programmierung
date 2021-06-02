@@ -16,7 +16,7 @@ function getSongs() {
       var songname = input.substring(slash + 1, period);
       var songname = songname.replace(/%20/g, " ");
       song.innerHTML =
-        "<input type=checkbox" + "><a title=" + input + ">" + songname + "</a>";
+        "<label class=checkerSong><input type=checkbox ><span class=checkmark></span></label> <a title=" + input + ">" + songname + "</a>";
       song.addEventListener("click", function playSong() {
         console.log(storageKey, "akdjfghakljsfhdalsdfjhakljdf", input);
 
