@@ -21,7 +21,7 @@ function createIframe() {
 // ausgabe des Local Storages
 // window.addEventListener("load", function () {
 // myFunction();
-allSongs();
+
 for (let i = 0; i < localStorage.length; i++) {
   let storageKey = localStorage.key(i);
   var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
