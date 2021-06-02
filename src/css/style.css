@@ -482,6 +482,48 @@ audio::-webkit-media-controls-panel {
   width: 30%;
 }
 
+.checkerSong{
+  position: relative;
+  cursor: pointer;
+}
+.checkerSong input{
+  position: relative;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height:0.8em;
+  width: 0.8em;
+  background-color: #eee;
+}
+.checkerSong:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.checkerSong input:checked ~ .checkmark {
+  background-color: black;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkerSong input:checked ~ .checkmark:after {
+  display: block;
+}
+.checkerSong .checkmark:after {
+  left: 0.288em;
+  top: 0.16em;
+  width: 0.16em;
+  height: 0.32em;
+  border: solid white;
+  border-width: 0 0.096em 0.096em 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 @keyframes rotateFrame {
   from {
     transform: rotate(0);

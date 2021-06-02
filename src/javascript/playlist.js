@@ -26,7 +26,6 @@ function createPlaylist() {
 
 function getPlaylists() {
   let lists = document.getElementById("playlists");
-
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
     let song = document.createElement("li");
@@ -36,8 +35,14 @@ function getPlaylists() {
       // song.innerHTML = "<input type=checkbox" + "><a>" + storageKey + "</a>";
       // var test = song.getElementsByTagName("input")[0].checked;
 
-      let inputText = document.createElement("input");
-      inputText.setAttribute("type", "checkbox");
+    let labelText = document.createElement("label");
+    let inputText = document.createElement("input");
+    let spanText = document.createElement("span");
+    labelText.setAttribute("class", "checkerSong")
+    inputText.setAttribute("type", "checkbox");
+    spanText.setAttribute("class", "checkmark")
+    labelText.appendChild(inputText);
+    labelText.appendChild(spanText);
 
       let ref = document.createElement("a");
       var linkText = document.createTextNode(storageKey);
@@ -46,7 +51,7 @@ function getPlaylists() {
         sessionStorage.setItem("playlist", storageKey);
         window.location.href = "#oneplaylist";
       };
-      song.appendChild(inputText);
+      song.appendChild(labelText);
       song.appendChild(ref);
       lists.appendChild(song);
     }
@@ -60,40 +65,53 @@ function getSpecificPlaylists() {
   header.innerHTML = item;
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
-    var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
+    let retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
     if (retrievedObject.type == "playlist" && storageKey == item) {
+      console.log("adasdasdasdasdasda", retrievedObject);
       // var a = retrievedObject.src.split(";");
       var array = retrievedObject.songs;
+      let objectSong = "";
+      let input = "";
       for (let b = 0; b < array.length; b++) {
         let song = document.createElement("li");
-        var objectSong = JSON.parse(array[b]);
+        objectSong = JSON.parse(array[b]);
         if (objectSong.type == "song") {
-          var input = objectSong.src;
-          if (input.includes(".mp3")) {
-          }
+          input = objectSong.src;
+          console.log(input, "input")
           var period = input.lastIndexOf(".");
           var slash = input.lastIndexOf("/");
-          var songname = input.substring(slash + 1, period);
-          var songname = songname.replace(/%20/g, " ");
-          song.innerHTML =
-            "<input type=checkbox" +
-            "><a href=" +
-            "index.html" +
-            ">" +
-            songname +
-            "</a>";
+          let songname = input.substring(slash + 1, period);
+          songname = songname.replace(/%20/g, " ");
+
+          let inputText = document.createElement("input");
+          inputText.setAttribute("type", "checkbox");
+
+          let ref = document.createElement("a");
+          ref.setAttribute("title", input);
+
+          let linkText = document.createTextNode(songname);
+          ref.appendChild(linkText);
+
+          ref.addEventListener("click", function playSong() {
+            var source = document.getElementById("standardAudioSrc");
+            var audio = document.getElementById("standardAudio");
+            console.log(retrievedObject, "Retrieved Object");
+
+            var obj = { type: "playedsong", current: JSON.stringify(retrievedObject), src: songname, key: b };
+            localStorage.removeItem("playedsong")
+            localStorage.setItem("playedsong", JSON.stringify(obj));
+            source.src = ref.title;
+
+            audio.load();
+            audio.play();
+          });
+
+          song.appendChild(inputText);
+          song.appendChild(ref);
+          lists.appendChild(song);
         }
-        // song.innerHTML =
-        //   "<input type=checkbox" +
-        //   "><a href=" +
-        //   "index.html" +
-        //   ">" +
-        //   array[b] +
-        //   "</a>";
-        // song.appendChild(button);
-        lists.appendChild(song);
-        console.log(song);
+
       }
     }
   }
@@ -122,3 +140,12 @@ function deletePlaylist() {
 
   location.reload();
 }
+
+
+
+
+
+
+
+
+
