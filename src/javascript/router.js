@@ -11,7 +11,7 @@ class Router {
   }
 
   init() {
-    var route = this.routes;
+    let route = this.routes;
     (function (scope, route) {
       window.addEventListener("hashchange", function (e) {
         scope.hasChanged(scope, route);
@@ -24,18 +24,18 @@ class Router {
   hasChanged(scope, r) {
     if (window.location.hash.length > 0) {
       //checkt ob der Name des Hashs mehr als 0 Buchstaben hat (also ob es sich um den ersten Aufruf der Seite)
-      for (var i = 0, length = r.length; i < length; i++) {
+      for (let i = 0, length = r.length; i < length; i++) {
         //läuft die Routen durch und checkt ob es sich dabei um die aktive Route handelt, wenn ja wird goToRoute aufgerufen um den HTML Inhalt zu laden
-        var route = r[i];
-        var currentHash = window.location.hash.substr(1);
+        let route = r[i];
+        let currentHash = window.location.hash.substr(1);
         if (route.isActiveRoute(currentHash)) {
           scope.goToRoute(route.htmlName);
         }
       }
     } else {
-      for (var i = 0, length = r.length; i < length; i++) {
+      for (let i = 0, length = r.length; i < length; i++) {
         //Läuft die Routen durch und sucht nach der default Route die beim erstmaligen Aufruf geladen werden soll
-        var route = r[i];
+        let route = r[i];
         if (route.defaultRoute) {
           scope.goToRoute(route.htmlName);
         }
@@ -46,12 +46,12 @@ class Router {
   goToRoute(htmlName) {
     //Der Funktion wird die Route übergeben von der er Mittels Ajax Request den HTML Inhalt laden und in index.html anzeigen soll.
     (function (scope) {
-      var url = "src/html/" + htmlName,
+      let url = "src/html/" + htmlName,
         xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
           scope.rootElement.innerHTML = this.responseText;
-          var currentHash = window.location.hash;
+          let currentHash = window.location.hash;
           if (currentHash == "#start") {
             console.log("Start Seite");
             createIframe();

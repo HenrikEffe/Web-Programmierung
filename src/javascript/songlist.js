@@ -3,14 +3,14 @@
 
 function getSongs() {
   let lists = document.getElementById("songliste");
-  var songs = JSON.parse(localStorage.getItem("Alle Songs"));
+  let songs = JSON.parse(localStorage.getItem("Alle Songs"));
   for (let i = 0; i < songs.songs.length; i++) {
     let song = document.createElement("li");
     let input = JSON.parse(songs.songs[i]).src;
-    var period = input.lastIndexOf(".");
-    var slash = input.lastIndexOf("/");
-    var songname = input.substring(slash + 1, period);
-    var songname = songname.replace(/%20/g, " ");
+    let period = input.lastIndexOf(".");
+    let slash = input.lastIndexOf("/");
+    let songname = input.substring(slash + 1, period);
+    songname = songname.replace(/%20/g, " ");
 
     let labelText = document.createElement("label");
     let inputText = document.createElement("input");
@@ -24,14 +24,14 @@ function getSongs() {
     let ref = document.createElement("a");
     ref.setAttribute("title", input);
 
-    var linkText = document.createTextNode(songname);
+    let linkText = document.createTextNode(songname);
     ref.appendChild(linkText);
 
     ref.addEventListener("click", function playSong() {
-      var source = document.getElementById("standardAudioSrc");
-      var audio = document.getElementById("standardAudio");
+      let source = document.getElementById("standardAudioSrc");
+      let audio = document.getElementById("standardAudio");
 
-      var obj = { type: "playedsong", current: JSON.stringify(songs), src: songname, key: i };
+      let obj = { type: "playedsong", current: JSON.stringify(songs), src: songname, key: i };
       localStorage.setItem("playedsong", JSON.stringify(obj));
 
       source.src = input;
@@ -57,17 +57,17 @@ function prevSong() {
     indexValue = index.key - 1;
   }
 
-  var song = JSON.parse(allsongs.songs[indexValue]);
+  let song = JSON.parse(allsongs.songs[indexValue]);
 
-  var period = song.src.lastIndexOf(".");
-  var slash = song.src.lastIndexOf("/");
-  var songname = song.src.substring(slash + 1, period);
-  var songname = songname.replace(/%20/g, " ");
+  let period = song.src.lastIndexOf(".");
+  let slash = song.src.lastIndexOf("/");
+  let songname = song.src.substring(slash + 1, period);
+  songname = songname.replace(/%20/g, " ");
 
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
 
-  var obj = { type: "playedsong", current: index.current, src: songname, key: indexValue };
+  let obj = { type: "playedsong", current: index.current, src: songname, key: indexValue };
   localStorage.setItem("playedsong", JSON.stringify(obj));
 
   source.src = song.src;
@@ -89,17 +89,17 @@ function nextSong() {
     indexValue = index.key + 1;
   }
 
-  var song = JSON.parse(allsongs.songs[indexValue]);
+  let song = JSON.parse(allsongs.songs[indexValue]);
 
-  var period = song.src.lastIndexOf(".");
-  var slash = song.src.lastIndexOf("/");
-  var songname = song.src.substring(slash + 1, period);
-  var songname = songname.replace(/%20/g, " ");
+  let period = song.src.lastIndexOf(".");
+  let slash = song.src.lastIndexOf("/");
+  let songname = song.src.substring(slash + 1, period);
+  songname = songname.replace(/%20/g, " ");
 
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
 
-  var obj = { type: "playedsong", current: index.current, src: songname, key: indexValue };
+  let obj = { type: "playedsong", current: index.current, src: songname, key: indexValue };
   localStorage.setItem("playedsong", JSON.stringify(obj));
 
   source.src = song.src;
