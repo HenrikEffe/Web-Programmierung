@@ -42,25 +42,24 @@
     </div>
     <!--FOOTER BEREICH-->
     <div class="footer">
-      <footer>
-        <canvas id="canvas"></canvas>
 
-        <p class="song-title">Testsong</p>
-        <p class="artist">Testartist</p>
+      <canvas id="canvas"></canvas>
 
+      <div id="audiocontrol">
         <button onclick="prevSong()" id="songbutton"><i class='bx bx-skip-previous-circle'></i></button>
         <audio id="standardAudio" controls>
           <source id="standardAudioSrc" src="" type="audio/mpeg">
           Your browser does not support the audio tag.
         </audio>
         <button onclick="nextSong()" id="songbutton"><i class='bx bx-skip-next-circle'></i></button>
+      </div>
+      <p class="song-title" id="title"> </p>
+      <!-- <input type="file" id="thefile" accept="audio/*" /> -->
 
 
-        <!-- <input type="file" id="thefile" accept="audio/*" /> -->
+      <!-- <input type="file" id="thefile" accept="audio/*" /> -->
+      <!-- <audio id="audio" controls></audio> -->
 
-        <!-- <audio id="audio" controls></audio> -->
-
-      </footer>
     </div>
   </div>
   <!--SCRIPT BEREICH-->

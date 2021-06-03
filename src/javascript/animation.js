@@ -12,7 +12,7 @@ window.onload = function () {
 
       var canvas = document.getElementById("canvas");
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight / 3;
+      canvas.height = window.innerHeight / 2.5;
       var ctx = canvas.getContext("2d");
 
       src.connect(analyser);
@@ -39,7 +39,7 @@ window.onload = function () {
 
         analyser.getByteFrequencyData(dataArray);
 
-        ctx.fillStyle = "#fff";
+        ctx.fillStyle = "#D9DADC";
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
         for (var i = 0; i < bufferLength; i++) {

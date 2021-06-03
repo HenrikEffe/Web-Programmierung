@@ -38,7 +38,7 @@ function getSongs() {
         key: i,
       };
       localStorage.setItem("playedsong", JSON.stringify(obj));
-
+      document.getElementById("title").innerText = songname;
       source.src = input;
 
       audio.load();
@@ -79,7 +79,7 @@ function prevSong() {
     key: indexValue,
   };
   localStorage.setItem("playedsong", JSON.stringify(obj));
-
+  document.getElementById("title").innerText = songname;
   source.src = song.src;
 
   audio.load();
@@ -114,7 +114,7 @@ function nextSong() {
     key: indexValue,
   };
   localStorage.setItem("playedsong", JSON.stringify(obj));
-
+  document.getElementById("title").innerText = songname;
   source.src = song.src;
 
   audio.load();
