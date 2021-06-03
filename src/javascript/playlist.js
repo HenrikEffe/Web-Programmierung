@@ -2,24 +2,22 @@
 "use strict";
 
 function createPlaylist() {
-  var lists = document.getElementById("songliste");
-  var items = lists.getElementsByTagName("li");
-  var playlistName = document.getElementById("playlistName").value;
+  let lists = document.getElementById("songliste");
+  let items = lists.getElementsByTagName("li");
+  let playlistName = document.getElementById("playlistName").value;
   if (playlistName == "") {
     alert("Geben Sie zuerst einen Namen ein");
   } else {
-    var songs = { type: "playlist", songs: [] };
-    for (var i = 0; i < items.length; ++i) {
+    let songs = { type: "playlist", songs: [] };
+    for (let i = 0; i < items.length; ++i) {
       if (items[i].getElementsByTagName("input")[0].checked) {
-        var obj = {
+        let obj = {
           type: "song",
           src: items[i].getElementsByTagName("a")[0].title,
         };
         songs["songs"].push(JSON.stringify(obj));
-        // songs = songs + items[i].getElementsByTagName("a")[0].innerHTML + ";";
       }
     }
-    // var obj = { type: "playlist", src: songs };
     localStorage.setItem(playlistName, JSON.stringify(songs));
   }
 }
@@ -29,23 +27,21 @@ function getPlaylists() {
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
     let song = document.createElement("li");
-    var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
+    let retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
     if (retrievedObject.type == "playlist") {
-      // song.innerHTML = "<input type=checkbox" + "><a>" + storageKey + "</a>";
-      // var test = song.getElementsByTagName("input")[0].checked;
 
-    let labelText = document.createElement("label");
-    let inputText = document.createElement("input");
-    let spanText = document.createElement("span");
-    labelText.setAttribute("class", "checkerSong")
-    inputText.setAttribute("type", "checkbox");
-    spanText.setAttribute("class", "checkmark")
-    labelText.appendChild(inputText);
-    labelText.appendChild(spanText);
+      let labelText = document.createElement("label");
+      let inputText = document.createElement("input");
+      let spanText = document.createElement("span");
+      labelText.setAttribute("class", "checkerSong")
+      inputText.setAttribute("type", "checkbox");
+      spanText.setAttribute("class", "checkmark")
+      labelText.appendChild(inputText);
+      labelText.appendChild(spanText);
 
       let ref = document.createElement("a");
-      var linkText = document.createTextNode(storageKey);
+      let linkText = document.createTextNode(storageKey);
       ref.appendChild(linkText);
       ref.onclick = function () {
         sessionStorage.setItem("playlist", storageKey);
@@ -68,9 +64,8 @@ function getSpecificPlaylists() {
     let retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
     if (retrievedObject.type == "playlist" && storageKey == item) {
-      console.log("adasdasdasdasdasda", retrievedObject);
-      // var a = retrievedObject.src.split(";");
-      var array = retrievedObject.songs;
+      console.log(retrievedObject);
+      let array = retrievedObject.songs;
       let objectSong = "";
       let input = "";
       for (let b = 0; b < array.length; b++) {
@@ -79,13 +74,19 @@ function getSpecificPlaylists() {
         if (objectSong.type == "song") {
           input = objectSong.src;
           console.log(input, "input")
-          var period = input.lastIndexOf(".");
-          var slash = input.lastIndexOf("/");
+          let period = input.lastIndexOf(".");
+          let slash = input.lastIndexOf("/");
           let songname = input.substring(slash + 1, period);
           songname = songname.replace(/%20/g, " ");
 
+          let labelText = document.createElement("label");
           let inputText = document.createElement("input");
+          let spanText = document.createElement("span");
+          labelText.setAttribute("class", "checkerSong")
           inputText.setAttribute("type", "checkbox");
+          spanText.setAttribute("class", "checkmark")
+          labelText.appendChild(inputText);
+          labelText.appendChild(spanText);
 
           let ref = document.createElement("a");
           ref.setAttribute("title", input);
@@ -94,8 +95,8 @@ function getSpecificPlaylists() {
           ref.appendChild(linkText);
 
           ref.addEventListener("click", function playSong() {
-            var source = document.getElementById("standardAudioSrc");
-            var audio = document.getElementById("standardAudio");
+            let source = document.getElementById("standardAudioSrc");
+            let audio = document.getElementById("standardAudio");
             console.log(retrievedObject, "Retrieved Object");
 
             var obj = { type: "playedsong", current: JSON.stringify(retrievedObject), src: songname, key: b };
@@ -107,7 +108,7 @@ function getSpecificPlaylists() {
             audio.play();
           });
 
-          song.appendChild(inputText);
+          song.appendChild(labelText);
           song.appendChild(ref);
           lists.appendChild(song);
         }
@@ -118,10 +119,10 @@ function getSpecificPlaylists() {
 }
 
 function deletePlaylist() {
-  var lists = document.getElementById("playlists");
-  var items = lists.getElementsByTagName("li");
+  let lists = document.getElementById("playlists");
+  let items = lists.getElementsByTagName("li");
   let songs = new Array();
-  for (var i = 0; i < items.length; ++i) {
+  for (let i = 0; i < items.length; ++i) {
     if (items[i].getElementsByTagName("input")[0].checked) {
       console.log(items[i] + items[i].getElementsByTagName("a")[0].innerHTML);
       songs.push(items[i].getElementsByTagName("a")[0].innerHTML);
@@ -130,10 +131,9 @@ function deletePlaylist() {
 
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
-    var retrievedObject = JSON.parse(localStorage.getItem(storageKey));
+    let retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
     if (retrievedObject.type == "playlist" && songs.includes(storageKey)) {
-      console.log("Playlist gefunden");
       localStorage.removeItem(storageKey);
     }
   }
