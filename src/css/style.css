@@ -43,6 +43,49 @@ body {
   margin-bottom: 850px;
 }
 
+.container#blur.active {
+  filter: blur(20px);
+
+}
+
+#popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 60%;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
+  visibility: hidden;
+  transition: 0.5s;
+  margin: auto;
+  z-index: 2;
+  border-radius: 5px;
+  overflow: scroll;
+}
+
+#popup ul{
+  margin: 20px;
+}
+
+#plist li{
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+#popup button{
+  margin: 20px;
+}
+
+
+
+#popup.active {
+  visibility: visible;
+  transition: 0.5s;
+}
+
+
 #canvas {
   background-color: var(--color-secondary);
   position: fixed;
