@@ -165,7 +165,9 @@ function removeSong() {
 function hidepopup() {
   let lists = document.getElementById("plist");
   let items = lists.getElementsByTagName("li");
-  let = sessionStorage.get("playlist");
+  let retrievedObject = JSON.parse(localStorage.getItem(sessionStorage.getItem("playlist")));
+  let array = retrievedObject.songs;
+
 
   for (let i = 0; i < items.length; ++i) {
     if (items[i].getElementsByTagName("input")[0].checked) {
@@ -173,15 +175,12 @@ function hidepopup() {
         type: "song",
         src: items[i].getElementsByTagName("a")[0].title,
       };
-      songs["songs"].push(JSON.stringify(obj));
+      array.push(JSON.stringify(obj));
     }
   }
-  localStorage.setItem(playlistName, JSON.stringify(songs));
 
-
-
-
-
+  let obj = { type: "playlist", songs: array };
+  localStorage.setItem(sessionStorage.getItem("playlist"), JSON.stringify(obj));
   var popup = document.getElementById('popup')
   popup.classList.remove('active');
 
