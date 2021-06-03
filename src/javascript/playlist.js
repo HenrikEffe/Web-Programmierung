@@ -35,14 +35,14 @@ function getPlaylists() {
       // song.innerHTML = "<input type=checkbox" + "><a>" + storageKey + "</a>";
       // var test = song.getElementsByTagName("input")[0].checked;
 
-    let labelText = document.createElement("label");
-    let inputText = document.createElement("input");
-    let spanText = document.createElement("span");
-    labelText.setAttribute("class", "checkerSong")
-    inputText.setAttribute("type", "checkbox");
-    spanText.setAttribute("class", "checkmark")
-    labelText.appendChild(inputText);
-    labelText.appendChild(spanText);
+      let labelText = document.createElement("label");
+      let inputText = document.createElement("input");
+      let spanText = document.createElement("span");
+      labelText.setAttribute("class", "checkerSong")
+      inputText.setAttribute("type", "checkbox");
+      spanText.setAttribute("class", "checkmark")
+      labelText.appendChild(inputText);
+      labelText.appendChild(spanText);
 
       let ref = document.createElement("a");
       var linkText = document.createTextNode(storageKey);
@@ -139,6 +139,27 @@ function deletePlaylist() {
   }
 
   location.reload();
+}
+
+function removeSong() {
+  var lists = document.getElementById("playlists");
+  var items = lists.getElementsByTagName("li");
+
+  let item = sessionStorage.getItem("playlist");
+  let retrievedObject = JSON.parse(localStorage.getItem(item));
+  var array = retrievedObject.songs;
+
+
+  for (var i = items.length - 1; i >= 0; --i) {
+    if (items[i].getElementsByTagName("input")[0].checked) {
+      array.splice(i, 1);
+    }
+  }
+
+  var obj = { type: "playlist", songs: array };
+  localStorage.removeItem(item)
+  localStorage.setItem(item, JSON.stringify(obj));
+
 }
 
 
