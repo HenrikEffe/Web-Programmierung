@@ -11,55 +11,72 @@
 </head>
 
 <body onload="javascript: createIframe()">
-  <div class="container">
-    <div class="hamburger-menu">
-      <div class="line line-1"></div>
-      <div class="line line-2"></div>
-      <div class="line line-3"></div>
-      <span>Schließen</span>
-    </div>
-    <section class="sidebar">
-      <ul class="menu">
-        <li class="menu-item">
-          <a href="#start" class="menu-link" data-content="Startseite">Startseite</a>
-        </li>
-        <li class="menu-item">
-          <a href="#song" class="menu-link" data-content="Alle Songs">Alle Songs</a>
-        </li>
-        <li class="menu-item">
-          <a href="#playlist" class="menu-link" data-content="Playlists">Playlists</a>
-        </li>
-        <li class="menu-item">
-          <a href="#impressum" class="menu-link" data-content="Impressum">Impressum</a>
-        </li>
-        <li class="menu-item"><input type="checkbox" id="switch" onclick="darkMode()" /><label for="switch"></label>
-        </li>
-      </ul>
-    </section>
-    <!-- CONTAINER BEREICH -->
-    <div id="container">
+  <div id="page-container">
+    <div class="wrapper">
+      <div class="wrapper-header">
+        <div class="logo">
+          <div class="wrapper-menu" style="cursor: pointer;" onclick="javascript: getNavbar()">
+            <div class="menu"></div>
+            <div class="menu"></div>
+            <div class="menu"></div>
+          </div>
+
+          <a href="#start"><img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABWklEQVRoge2YsUrDUBSG/6QptiIWlTo4WKiUiIgi2OCgdi2IQ59AnNxE8H18BSdRxKWDgy4iOKjFBixqQSkoYoTUxEGUau0gnJND8XxbuPDf83FyD5cLKIqiKP8Zo/WjUNoJpQr5C+Xtpa+6TclCKLA6LbRaAu3dkV7/pOs7oALS6BSSRgWkYRGYWplFT3+CI7oNFoGh8WE4GwsYcUZ/jAl62H4hKxmHXZrE9GoeiVSSaxv+MzCYS8PZXESmMAbDoG9HJIc4Fo8hW7QxszaH3nQfaXakUyiVGUB+ff6jGyZNNyIfo6ZlIlu0kVueIMnreJ3m4vXRg7t/ifrJDUleZAK+56NWrqJ26CJoBmS57ALBW4Dbo2u4BxU0PZ88n00gDEPcn9VR3buA13jh2oZHoFF5wNXuOZ7vnjjiv8EicLp1zBH7K3oblabrBfRdSBoVkEbfhRRFURRFkneQnXFwYEqs4gAAAABJRU5ErkJggg=="
+              alt="Bild konnte nicht geladen werden"
+              onclick="javascript: (window.location.hash!='#start')? window.location.hash='#start':getThumbnailsBySearch() " /></a>
+        </div>
+      </div>
+      <div class="wrapper-sidebar">
+        <div class="sidebar">
+          <nav id="navmain">
+            <ul class="menu">
+              <li class="menu-item">
+                <a href="#start" class="menu-link" data-content="Startseite">Startseite</a>
+              </li>
+              <li class="menu-item">
+                <a href="#song" class="menu-link" data-content="Alle Songs">Alle Songs</a>
+              </li>
+              <li class="menu-item">
+                <a href="#playlist" class="menu-link" data-content="Playlists">Playlists</a>
+              </li>
+              <li class="menu-item">
+                <a href="#impressum" class="menu-link" data-content="Impressum">Impressum</a>
+              </li>
+              <li class="menu-item"><input type="checkbox" id="switch" onclick="darkMode()" /><label
+                  for="switch"></label>
+              </li>
+            </ul>
+
+          </nav>
+        </div>
+      </div>
+      <!-- CONTAINER BEREICH -->
+      <div id="container">
+      </div>
+      <div class="footer">
+        <footer>
+          <canvas id="canvas"></canvas>
+
+          <p class="song-title">Testsong</p>
+          <p class="artist">Testartist</p>
+
+          <button onclick="prevSong()" id="songbutton"><i class='bx bx-skip-previous-circle'></i></button>
+          <audio id="standardAudio" controls>
+            <source id="standardAudioSrc" src="" type="audio/mpeg">
+            Your browser does not support the audio tag.
+          </audio>
+          <button onclick="nextSong()" id="songbutton"><i class='bx bx-skip-next-circle'></i></button>
+
+          <!-- <input type="file" id="thefile" accept="audio/*" /> -->
+
+          <!-- <audio id="audio" controls></audio> -->
+
+        </footer>
+      </div>
     </div>
     <!--FOOTER BEREICH-->
-    <div class="footer">
-      <footer>
-        <canvas id="canvas"></canvas>
 
-        <p class="song-title">Testsong</p>
-        <p class="artist">Testartist</p>
-
-        <button onclick="prevSong()" id="songbutton"><i class='bx bx-skip-previous-circle'></i></button>
-        <audio id="standardAudio" controls>
-          <source id="standardAudioSrc" src="" type="audio/mpeg">
-          Your browser does not support the audio tag.
-        </audio>
-        <button onclick="nextSong()" id="songbutton"><i class='bx bx-skip-next-circle'></i></button>
-
-        <!-- <input type="file" id="thefile" accept="audio/*" /> -->
-
-        <!-- <audio id="audio" controls></audio> -->
-
-      </footer>
-    </div>
   </div>
   <!--SCRIPT BEREICH-->
   <script src="src/javascript/script.js"></script>
@@ -72,6 +89,7 @@
   <script src="src/javascript/playlist.js"></script>
   <script src="src/javascript/themes.js"></script>
   <script src="src/javascript/animation.js"></script>
+  <script src="src/javascript/hamburgerMenu.js"></script>
 </body>
 
 </html>
