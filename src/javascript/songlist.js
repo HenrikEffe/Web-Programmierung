@@ -41,7 +41,7 @@ function getSongs() {
 
       source.src = input;
 
-      // audio.load();
+      audio.load();
       audio.play();
     });
 
