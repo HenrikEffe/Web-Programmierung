@@ -20,6 +20,8 @@ function createPlaylist() {
     }
     localStorage.setItem(playlistName, JSON.stringify(songs));
   }
+  window.location.href = '#playlist';
+
 }
 
 function getPlaylists() {
@@ -158,6 +160,7 @@ function removeSong() {
   var obj = { type: "playlist", songs: array };
   localStorage.removeItem(item);
   localStorage.setItem(item, JSON.stringify(obj));
+  location.reload();
 }
 
 function hidepopup() {
@@ -181,7 +184,7 @@ function hidepopup() {
   localStorage.setItem(sessionStorage.getItem("playlist"), JSON.stringify(obj));
   var popup = document.getElementById('popup')
   popup.classList.remove('active');
-
+  location.reload();
 }
 
 function showpopup() {
