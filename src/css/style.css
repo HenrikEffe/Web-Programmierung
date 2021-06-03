@@ -46,7 +46,6 @@ body {
 
 .container#blur.active {
   filter: blur(20px);
-
 }
 
 #popup {
@@ -57,7 +56,7 @@ body {
   transform: translate(-50%, -50%);
   width: 90%;
   height: 60%;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
   visibility: hidden;
   transition: 0.5s;
   margin: auto;
@@ -66,20 +65,18 @@ body {
   overflow: scroll;
 }
 
-#popup ul{
+#popup ul {
   margin: 20px;
 }
 
-#plist li{
+#plist li {
   font-size: 1.5rem;
   margin-bottom: 5px;
 }
 
-#popup button{
+#popup button {
   margin: 20px;
 }
-
-
 
 #popup.active {
   visibility: visible;
@@ -210,6 +207,7 @@ audio {
   cursor: pointer;
   margin-right: 20px;
   margin-bottom: 20px;
+  margin: 0 auto;
 }
 
 .normalButton:hover {
@@ -246,7 +244,7 @@ audio {
   top: 10%;
   left: 10%;
   width: 80%;
-  padding-bottom: 100px;
+  padding-bottom: 150px;
 }
 
 .songlist ul {
@@ -255,6 +253,7 @@ audio {
   padding: 0;
 }
 .songlist ul li {
+  cursor: pointer;
   font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
   border-bottom: 1px solid #ccc;
   margin-bottom: 5px;
@@ -267,6 +266,7 @@ audio {
 }
 
 .songlist ul li a {
+  cursor: pointer;
   text-decoration: none;
   color: var(--color-primary);
   /* display: block; */
@@ -499,7 +499,6 @@ audio {
   color: #b2b9c7;
 }
 
-
 .checkerSong {
   position: relative;
   cursor: pointer;
@@ -557,6 +556,9 @@ audio {
 }
 
 @media (max-width: 1000px) {
+  .songlist ul li a:hover {
+    font-size: 2rem;
+  }
   #new {
     margin-top: 1%;
     margin-bottom: 7.5%;
@@ -572,14 +574,6 @@ audio {
   .music-app {
     height: 90px;
     margin: 5px auto;
-  }
-
-  .music-content {
-    font-size: 2rem;
-  }
-
-  .artist {
-    font-size: 1.5rem;
   }
 
   .songlist h1 {
