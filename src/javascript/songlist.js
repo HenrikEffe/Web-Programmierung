@@ -15,9 +15,9 @@ function getSongs() {
     let labelText = document.createElement("label");
     let inputText = document.createElement("input");
     let spanText = document.createElement("span");
-    labelText.setAttribute("class", "checkerSong")
+    labelText.setAttribute("class", "checkerSong");
     inputText.setAttribute("type", "checkbox");
-    spanText.setAttribute("class", "checkmark")
+    spanText.setAttribute("class", "checkmark");
     labelText.appendChild(inputText);
     labelText.appendChild(spanText);
 
@@ -31,7 +31,14 @@ function getSongs() {
       var source = document.getElementById("standardAudioSrc");
       var audio = document.getElementById("standardAudio");
 
-      var obj = { type: "playedsong", current: JSON.stringify(songs), src: songname, key: i };
+      // audio.setAttribute("onplay", play());
+
+      var obj = {
+        type: "playedsong",
+        current: JSON.stringify(songs),
+        src: songname,
+        key: i,
+      };
       localStorage.setItem("playedsong", JSON.stringify(obj));
 
       source.src = input;
@@ -67,7 +74,12 @@ function prevSong() {
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
 
-  var obj = { type: "playedsong", current: index.current, src: songname, key: indexValue };
+  var obj = {
+    type: "playedsong",
+    current: index.current,
+    src: songname,
+    key: indexValue,
+  };
   localStorage.setItem("playedsong", JSON.stringify(obj));
 
   source.src = song.src;
@@ -75,8 +87,6 @@ function prevSong() {
   audio.load();
   audio.play();
 }
-
-
 
 function nextSong() {
   let index = JSON.parse(localStorage.getItem("playedsong"));
@@ -99,7 +109,12 @@ function nextSong() {
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
 
-  var obj = { type: "playedsong", current: index.current, src: songname, key: indexValue };
+  var obj = {
+    type: "playedsong",
+    current: index.current,
+    src: songname,
+    key: indexValue,
+  };
   localStorage.setItem("playedsong", JSON.stringify(obj));
 
   source.src = song.src;

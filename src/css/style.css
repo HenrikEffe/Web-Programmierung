@@ -482,11 +482,11 @@ audio::-webkit-media-controls-panel {
   width: 30%;
 }
 
-.checkerSong{
+.checkerSong {
   position: relative;
   cursor: pointer;
 }
-.checkerSong input{
+.checkerSong input {
   position: relative;
   opacity: 0;
   cursor: pointer;
@@ -495,7 +495,7 @@ audio::-webkit-media-controls-panel {
   position: absolute;
   top: 0;
   left: 0;
-  height:0.8em;
+  height: 0.8em;
   width: 0.8em;
   background-color: #eee;
 }
