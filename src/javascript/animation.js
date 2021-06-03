@@ -4,11 +4,16 @@ window.onload = function () {
   //   var file = document.getElementById("thefile");
   var audio = document.getElementById("standardAudio");
 
+  console.log("moin");
+  // audio.load();
+  // audio.play();
   // var files = this.files;
   // audio.src = URL.createObjectURL(files[0]);
   // audio.load();
   // audio.play();
   var context = new AudioContext();
+  // console.log(context.createMediaElementSource(audio));
+
   var src = context.createMediaElementSource(audio);
   var analyser = context.createAnalyser();
 
