@@ -79,7 +79,7 @@ function allSongs() {
   if (localStorage.getItem("Alle Songs") != undefined) {
     localStorage.removeItem("Alle Songs");
   }
-  let playlistObj = { type: "playlist", songs: [] };
+  let playlistObj = { type: "songplaylist", songs: [] };
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
     let retrievedObject = JSON.parse(localStorage.getItem(storageKey));

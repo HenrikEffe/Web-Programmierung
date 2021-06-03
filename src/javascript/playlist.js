@@ -30,13 +30,12 @@ function getPlaylists() {
     let retrievedObject = JSON.parse(localStorage.getItem(storageKey));
 
     if (retrievedObject.type == "playlist") {
-
       let labelText = document.createElement("label");
       let inputText = document.createElement("input");
       let spanText = document.createElement("span");
-      labelText.setAttribute("class", "checkerSong")
+      labelText.setAttribute("class", "checkerSong");
       inputText.setAttribute("type", "checkbox");
-      spanText.setAttribute("class", "checkmark")
+      spanText.setAttribute("class", "checkmark");
       labelText.appendChild(inputText);
       labelText.appendChild(spanText);
 
@@ -62,7 +61,6 @@ function getSpecificPlaylists() {
 
   let retrievedObject = JSON.parse(localStorage.getItem(item));
 
-
   console.log(retrievedObject);
   let array = retrievedObject.songs;
   let objectSong = "";
@@ -72,7 +70,7 @@ function getSpecificPlaylists() {
     objectSong = JSON.parse(array[b]);
     if (objectSong.type == "song") {
       input = objectSong.src;
-      console.log(input, "input")
+      console.log(input, "input");
       let period = input.lastIndexOf(".");
       let slash = input.lastIndexOf("/");
       let songname = input.substring(slash + 1, period);
@@ -81,9 +79,9 @@ function getSpecificPlaylists() {
       let labelText = document.createElement("label");
       let inputText = document.createElement("input");
       let spanText = document.createElement("span");
-      labelText.setAttribute("class", "checkerSong")
+      labelText.setAttribute("class", "checkerSong");
       inputText.setAttribute("type", "checkbox");
-      spanText.setAttribute("class", "checkmark")
+      spanText.setAttribute("class", "checkmark");
       labelText.appendChild(inputText);
       labelText.appendChild(spanText);
 
@@ -98,9 +96,15 @@ function getSpecificPlaylists() {
         let audio = document.getElementById("standardAudio");
         console.log(retrievedObject, "Retrieved Object");
 
-        var obj = { type: "playedsong", current: JSON.stringify(retrievedObject), src: songname, key: b };
-        localStorage.removeItem("playedsong")
+        var obj = {
+          type: "playedsong",
+          current: JSON.stringify(retrievedObject),
+          src: songname,
+          key: b,
+        };
+        localStorage.removeItem("playedsong");
         localStorage.setItem("playedsong", JSON.stringify(obj));
+        document.getElementById("title").innerText = songname;
         source.src = ref.title;
 
         audio.load();
@@ -111,10 +115,7 @@ function getSpecificPlaylists() {
       song.appendChild(ref);
       lists.appendChild(song);
     }
-
   }
-
-
 }
 
 function deletePlaylist() {
@@ -148,7 +149,6 @@ function removeSong() {
   let retrievedObject = JSON.parse(localStorage.getItem(item));
   var array = retrievedObject.songs;
 
-
   for (var i = items.length - 1; i >= 0; --i) {
     if (items[i].getElementsByTagName("input")[0].checked) {
       array.splice(i, 1);
@@ -156,11 +156,9 @@ function removeSong() {
   }
 
   var obj = { type: "playlist", songs: array };
-  localStorage.removeItem(item)
+  localStorage.removeItem(item);
   localStorage.setItem(item, JSON.stringify(obj));
-
 }
-
 
 function hidepopup() {
   let lists = document.getElementById("plist");
@@ -187,8 +185,8 @@ function hidepopup() {
 }
 
 function showpopup() {
-  var popup = document.getElementById('popup')
-  popup.classList.add('active');
+  var popup = document.getElementById("popup");
+  popup.classList.add("active");
   let lists = document.getElementById("plist");
   while (lists.firstChild) {
     lists.removeChild(lists.firstChild);
@@ -208,13 +206,12 @@ function showpopup() {
     let songname = input.substring(slash + 1, period);
     songname = songname.replace(/%20/g, " ");
 
-
     let labelText = document.createElement("label");
     let inputText = document.createElement("input");
     let spanText = document.createElement("span");
-    labelText.setAttribute("class", "checkerSong")
+    labelText.setAttribute("class", "checkerSong");
     inputText.setAttribute("type", "checkbox");
-    spanText.setAttribute("class", "checkmark")
+    spanText.setAttribute("class", "checkmark");
     labelText.appendChild(inputText);
     labelText.appendChild(spanText);
 
@@ -227,17 +224,5 @@ function showpopup() {
     song.appendChild(labelText);
     song.appendChild(ref);
     lists.appendChild(song);
-
   }
-
-
 }
-
-
-
-
-
-
-
-
-
