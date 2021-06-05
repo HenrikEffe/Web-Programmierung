@@ -7,6 +7,8 @@ function createPlaylist() {
   let playlistName = document.getElementById("playlistName").value;
   if (playlistName == "") {
     alert("Geben Sie zuerst einen Namen ein");
+  } else if (localStorage.getItem(playlistName) != undefined) {
+    alert("Dieser Playlistname exiztiert bereits!");
   } else {
     let songs = { type: "playlist", songs: [] };
     for (let i = 0; i < items.length; ++i) {
@@ -20,8 +22,7 @@ function createPlaylist() {
     }
     localStorage.setItem(playlistName, JSON.stringify(songs));
   }
-  window.location.href = '#playlist';
-
+  window.location.href = "#playlist";
 }
 
 function getPlaylists() {
@@ -93,7 +94,6 @@ function getSpecificPlaylists() {
       ref.appendChild(linkText);
 
       ref.addEventListener("click", function playSong() {
-
         console.log(retrievedObject, "Retrieved Object");
 
         var obj = {
@@ -111,16 +111,11 @@ function getSpecificPlaylists() {
         audio.play();
       });
 
-
-
-
-
       song.appendChild(labelText);
       song.appendChild(ref);
       lists.appendChild(song);
     }
   }
-
 }
 
 function deletePlaylist() {
@@ -146,8 +141,6 @@ function deletePlaylist() {
   location.reload();
 }
 
-
-
 function removeSong() {
   var lists = document.getElementById("playlists");
   var items = lists.getElementsByTagName("li");
@@ -171,9 +164,10 @@ function removeSong() {
 function hidepopup() {
   let lists = document.getElementById("plist");
   let items = lists.getElementsByTagName("li");
-  let retrievedObject = JSON.parse(localStorage.getItem(sessionStorage.getItem("playlist")));
+  let retrievedObject = JSON.parse(
+    localStorage.getItem(sessionStorage.getItem("playlist"))
+  );
   let array = retrievedObject.songs;
-
 
   for (let i = 0; i < items.length; ++i) {
     if (items[i].getElementsByTagName("input")[0].checked) {
@@ -187,8 +181,8 @@ function hidepopup() {
 
   let obj = { type: "playlist", songs: array };
   localStorage.setItem(sessionStorage.getItem("playlist"), JSON.stringify(obj));
-  var popup = document.getElementById('popup')
-  popup.classList.remove('active');
+  var popup = document.getElementById("popup");
+  popup.classList.remove("active");
   location.reload();
 }
 
@@ -209,9 +203,7 @@ function showpopup() {
     objectSong = JSON.parse(array[b]);
     input = objectSong.src;
 
-
     let songname = formatName(objectSong);
-
 
     let labelText = document.createElement("label");
     let inputText = document.createElement("input");
