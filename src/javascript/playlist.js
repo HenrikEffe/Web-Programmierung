@@ -23,7 +23,6 @@ function createPlaylist() {
     localStorage.setItem(playlistName, JSON.stringify(songs));
     window.location.href = "#playlist";
   }
-
 }
 
 function getPlaylists() {
@@ -187,16 +186,11 @@ function hidepopup() {
   location.reload();
 }
 
-
 function closepopup() {
   var popup = document.getElementById("popup");
   popup.classList.remove("active");
   location.reload();
 }
-
-
-
-
 
 function showpopup() {
   let popup = document.getElementById("popup");

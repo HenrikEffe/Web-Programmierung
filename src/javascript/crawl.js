@@ -1,48 +1,50 @@
 // Strikter Modus für komplettes Skript
 "use strict";
 
-
-
 function setup() {
   let theme = { type: "darkmode", src: "theme-light" };
   localStorage.setItem("darkmode", JSON.stringify(theme));
 }
-
-
+/**
+ * Erstellt ein IFrame vom Hauptordner.
+ */
 function createIframe() {
   let ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", "musikframe");
   ifrm.setAttribute("src", "http://localhost/Web-Programmierung/musik");
   ifrm.style.display = "none";
-  ifrm.style.width = "100%";
-  ifrm.style.height = "480px";
   document.body.appendChild(ifrm);
   let iframe = document.getElementById("musikframe");
-  iframe.onload = function (event) {
-    readSongs(document.getElementById("musikframe"));
+  iframe.onload = function () {
+    readSongs(iframe);
   };
   window.addEventListener("load", function () {
     removeIframe();
   });
 }
-
+/**
+ * Erstellt ein IFrame für einen neu einzulesenen Ordner
+ * @param {Pfad vom Ordner} source
+ */
 function readFolder(source) {
   let ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", source.textContent);
   ifrm.setAttribute("src", source);
   ifrm.style.display = "none";
-  ifrm.style.width = "100%";
-  ifrm.style.height = "480px";
   document.body.appendChild(ifrm);
   let iframe = document.getElementById(source.textContent);
-  iframe.onload = function (event) {
-    readSongs(document.getElementById(source.textContent));
+  iframe.onload = function () {
+    readSongs(iframe);
   };
 }
-
-
+/**
+ * Funktion zum auslesen eines Ordners. Speichert die Songs als JSON Object im Webstorage.
+ * Speichert den Ordner als Playlist mit den Songs im Webstorage
+ * @param {IFrame in welches der auszulesene Ordner reingeladen wird} iframe
+ */
 function readSongs(iframe) {
   let iframebody = iframe.contentWindow.document.querySelector("table").rows;
+  // JSON Object mit Array zum Speichern der Unterordner als Playlist
   let playlistObj = { type: "playlist", songs: [] };
   for (let key = 0; key < iframebody.length; key++) {
     let select = iframebody[key].querySelector("a");
@@ -50,7 +52,7 @@ function readSongs(iframe) {
       select != null &&
       (select.toString().includes(".mp3") || select.toString().includes(".ogg"))
     ) {
-      // Musik in Webstorage speichern (ohne Ordner Zuweisung)
+      // Musik in Webstorage speichern
       if (typeof Storage !== "undefined") {
         let obj = { type: "song", src: select.toString() };
         playlistObj["songs"].push(JSON.stringify(obj));
@@ -72,15 +74,22 @@ function readSongs(iframe) {
   let name = iframe.src;
   let slash = name.lastIndexOf("/", name.lastIndexOf("/") - 1);
   name = name.substring(slash + 1, name.lastIndexOf("/"));
+  name = name.replace(/%20/g, " ");
+  name = name.replace(/%c3%a4/g, "ä");
+  name = name.replace(/%c3%b6/g, "ö");
+  name = name.replace(/%c3%bc/g, "ü");
+  name = name.replace(/%c3%9f/g, "ß");
+  // Array nach Namen sortieren
   playlistObj.songs.sort(function (l, u) {
     return l.toLowerCase().localeCompare(u.toLowerCase());
   });
   localStorage.setItem(name, JSON.stringify(playlistObj));
 }
 
-// erstellt ein JSON Array für Alle Songs
+/**
+ * Erstellt eine Playlist, in welcher alle Songs enthalten sind.
+ */
 function allSongs() {
-
   if (localStorage.getItem("Alle Songs") != undefined) {
     localStorage.removeItem("Alle Songs");
   }
@@ -92,15 +101,18 @@ function allSongs() {
       playlistObj["songs"].push(JSON.stringify(retrievedObject));
     }
   }
+  // Array nach Namen sortieren
   playlistObj.songs.sort(function (l, u) {
+    l = formatName(JSON.parse(l));
+    u = formatName(JSON.parse(u));
     return l.toLowerCase().localeCompare(u.toLowerCase());
   });
   localStorage.setItem("Alle Songs", JSON.stringify(playlistObj));
-
 }
-
+/**
+ * Löscht alle IFrame
+ */
 function removeIframe() {
-  console.log("Remove!");
   let elements = document.getElementsByTagName("iframe");
   while (elements.length) {
     elements[0].parentNode.removeChild(elements[0]);

@@ -46,11 +46,9 @@ function getSongs() {
     song.appendChild(ref);
     lists.appendChild(song);
   }
-
 }
 
 function formatName(song) {
-
   let period = song.src.lastIndexOf(".");
   let slash = song.src.lastIndexOf("/");
   let songname = song.src.substring(slash + 1, period);
@@ -79,7 +77,6 @@ function autoplayddd() {
   let songname = formatName(JSON.parse(allsongs.songs[i]));
   document.getElementById("title").innerText = songname;
 
-
   localStorage.removeItem("playedsong");
   let obj = {
     type: "playedsong",
@@ -89,12 +86,9 @@ function autoplayddd() {
   };
   localStorage.setItem("playedsong", JSON.stringify(obj));
 
-
   source.src = JSON.parse(allsongs.songs[i]).src;
   audio.load();
   audio.play();
-
-
 }
 
 function prevSong() {
@@ -140,7 +134,6 @@ function nextSong() {
   }
 
   let song = JSON.parse(allsongs.songs[indexValue]);
-
 
   let songname = formatName(song);
 
