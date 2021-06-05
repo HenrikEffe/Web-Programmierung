@@ -50,7 +50,12 @@ body {
 .container#blur.active {
   filter: blur(20px);
 }
-
+#volume{
+  display: none;
+}
+#volumeButton{
+  display: none;
+}
 #popup {
   position: fixed;
   top: 40%;
@@ -677,5 +682,12 @@ audio {
     margin-right: 3%;
     margin-top: 5%;
     font-size: 160%;
+  }
+  #volume{
+    display: unset;
+  }
+  #volumeButton{
+    display: unset;
+    font-size: 250%;
   }
 }
