@@ -1,9 +1,15 @@
 // Strikter Modus für komplettes Skript
 "use strict";
 
-function createIframe() {
+
+
+function setup() {
   let theme = { type: "darkmode", src: "theme-light" };
   localStorage.setItem("darkmode", JSON.stringify(theme));
+}
+
+
+function createIframe() {
   let ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", "musikframe");
   ifrm.setAttribute("src", "http://localhost/Web-Programmierung/musik");
@@ -11,7 +17,6 @@ function createIframe() {
   ifrm.style.width = "100%";
   ifrm.style.height = "480px";
   document.body.appendChild(ifrm);
-
   let iframe = document.getElementById("musikframe");
   iframe.onload = function (event) {
     readSongs(document.getElementById("musikframe"));
@@ -34,8 +39,9 @@ function readFolder(source) {
     readSongs(document.getElementById(source.textContent));
   };
 }
+
+
 function readSongs(iframe) {
-  console.log("Hallo");
   let iframebody = iframe.contentWindow.document.querySelector("table").rows;
   let playlistObj = { type: "playlist", songs: [] };
   for (let key = 0; key < iframebody.length; key++) {

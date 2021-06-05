@@ -54,7 +54,7 @@ class Router {
           let currentHash = window.location.hash;
           if (currentHash == "#start") {
             console.log("Start Seite");
-
+            setup();
             createIframe();
 
           } else if (currentHash == "#song") {
