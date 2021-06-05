@@ -80,16 +80,14 @@ body {
 }
 
 #popup button {
-  background-color: rgba(255, 255, 255, 0.8);
   border-style: unset;
   border-width: large;
-  color: rgb(8, 8, 8);
   transition-duration: 0.3s;
     margin-left: 22px;
     margin-bottom: 5px;
     width: 15%;
     height: 10%;
-    border-radius: inherit;
+    
 }
 
 #popup.active {

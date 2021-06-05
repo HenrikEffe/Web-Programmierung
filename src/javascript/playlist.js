@@ -96,7 +96,7 @@ function getSpecificPlaylists() {
       ref.addEventListener("click", function playSong() {
         console.log(retrievedObject, "Retrieved Object");
 
-        var obj = {
+        let obj = {
           type: "playedsong",
           current: JSON.stringify(retrievedObject),
           src: songname,
@@ -142,20 +142,20 @@ function deletePlaylist() {
 }
 
 function removeSong() {
-  var lists = document.getElementById("playlists");
-  var items = lists.getElementsByTagName("li");
+  let lists = document.getElementById("playlists");
+  let items = lists.getElementsByTagName("li");
 
   let item = sessionStorage.getItem("playlist");
   let retrievedObject = JSON.parse(localStorage.getItem(item));
-  var array = retrievedObject.songs;
+  let array = retrievedObject.songs;
 
-  for (var i = items.length - 1; i >= 0; --i) {
+  for (let i = items.length - 1; i >= 0; --i) {
     if (items[i].getElementsByTagName("input")[0].checked) {
       array.splice(i, 1);
     }
   }
 
-  var obj = { type: "playlist", songs: array };
+  let obj = { type: "playlist", songs: array };
   localStorage.removeItem(item);
   localStorage.setItem(item, JSON.stringify(obj));
   location.reload();
@@ -181,13 +181,13 @@ function hidepopup() {
 
   let obj = { type: "playlist", songs: array };
   localStorage.setItem(sessionStorage.getItem("playlist"), JSON.stringify(obj));
-  var popup = document.getElementById("popup");
+  let popup = document.getElementById("popup");
   popup.classList.remove("active");
   location.reload();
 }
 
 function showpopup() {
-  var popup = document.getElementById("popup");
+  let popup = document.getElementById("popup");
   popup.classList.add("active");
   let lists = document.getElementById("plist");
   while (lists.firstChild) {
