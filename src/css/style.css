@@ -569,6 +569,11 @@ audio {
 
 
 @media (max-width: 1000px) {
+  .song-title {
+
+    font-size: 2rem;
+
+  }
 
   #popup button {
 
@@ -619,6 +624,7 @@ audio {
     font-size: 2.5rem;
   }
   .footer{
+    height: 25%;
     width: 100%;
   }
 }
