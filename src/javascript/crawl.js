@@ -2,6 +2,7 @@
 "use strict";
 
 function createIframe() {
+  window.reload(true);
   let theme = { type: "darkmode", src: "theme-light" };
   localStorage.setItem("darkmode", JSON.stringify(theme));
   let ifrm = document.createElement("iframe");
