@@ -56,6 +56,8 @@ function getPlaylists() {
 }
 
 function getSpecificPlaylists() {
+  let source = document.getElementById("standardAudioSrc");
+  let audio = document.getElementById("standardAudio");
   let lists = document.getElementById("playlists");
   let header = document.getElementById("header");
   let item = sessionStorage.getItem("playlist");
@@ -72,7 +74,6 @@ function getSpecificPlaylists() {
     objectSong = JSON.parse(array[b]);
     if (objectSong.type == "song") {
       input = objectSong.src;
-      console.log(input, "input");
       let period = input.lastIndexOf(".");
       let slash = input.lastIndexOf("/");
       let songname = input.substring(slash + 1, period);
@@ -94,8 +95,7 @@ function getSpecificPlaylists() {
       ref.appendChild(linkText);
 
       ref.addEventListener("click", function playSong() {
-        let source = document.getElementById("standardAudioSrc");
-        let audio = document.getElementById("standardAudio");
+
         console.log(retrievedObject, "Retrieved Object");
 
         var obj = {
@@ -113,11 +113,16 @@ function getSpecificPlaylists() {
         audio.play();
       });
 
+
+
+
+
       song.appendChild(labelText);
       song.appendChild(ref);
       lists.appendChild(song);
     }
   }
+
 }
 
 function deletePlaylist() {
@@ -142,6 +147,45 @@ function deletePlaylist() {
 
   location.reload();
 }
+
+function autoplay() {
+  let source = document.getElementById("standardAudioSrc");
+  let audio = document.getElementById("standardAudio");
+  let index = JSON.parse(localStorage.getItem("playedsong"));
+  let allsongs = JSON.parse(index.current);
+  console.log(allsongs);
+
+  // audio.addEventListener('ended', function () {
+
+
+
+  //   let link = JSON.parse(array[i + 1]).src;
+  //   console.log(JSON.parse(array[i + 1]).src)
+  //   period = link.lastIndexOf(".");
+  //   slash = link.lastIndexOf("/");
+  //   songname = link.substring(slash + 1, period);
+  //   songname = songname.replace(/%20/g, " ");
+
+
+  //   localStorage.removeItem("playedsong");
+  //   let obj = {
+  //     type: "playedsong",
+  //     current: JSON.stringify(retrievedObject),
+  //     src: songname,
+  //     key: i + 1,
+  //     nameofPlaylist: item,
+  //   };
+  //   localStorage.setItem("playedsong", JSON.stringify(obj));
+  //   document.getElementById("title").innerText = songname;
+  //   source.src = link;
+
+
+  //   audio.load();
+  //   audio.play();
+  // })
+
+}
+
 
 function removeSong() {
   var lists = document.getElementById("playlists");

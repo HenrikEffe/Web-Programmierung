@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="src/css/style.css" />
 </head>
 
-<body onload="javascript: createIframe()">
+<body onload="javascript: createIframe() , autoplay()">
   <div class="container">
     <div class="hamburger-menu">
       <div class="line line-1"></div>
@@ -47,7 +47,7 @@
 
       <div id="audiocontrol">
         <button onclick="prevSong()" id="songbutton"><i class='bx bx-skip-previous-circle'></i></button>
-        <audio id="standardAudio" controls>
+        <audio id="standardAudio" controls onended="autoplayddd()">
           <source id="standardAudioSrc" src="" type="audio/mpeg">
           Your browser does not support the audio tag.
         </audio>
@@ -63,6 +63,9 @@
     </div>
   </div>
   <!--SCRIPT BEREICH-->
+
+
+
   <script src="src/javascript/script.js"></script>
   <script src="src/javascript/crawl.js"></script>
   <script src="src/javascript/ajaxGet.js"></script>
