@@ -54,9 +54,11 @@ class Router {
           let currentHash = window.location.hash;
           if (currentHash == "#start") {
             console.log("Start Seite");
-            allSongs();
+
             createIframe();
+
           } else if (currentHash == "#song") {
+            allSongs();
             console.log("Song Seite");
             getSongs();
           } else if (currentHash == "#playlist") {
