@@ -213,23 +213,42 @@ audio {
 }
 
 .normalButton {
-  background-color: rgba(110, 20, 20, 0.8);
-  border-style: unset;
-  border-width: large;
-  color: white;
-  padding: 30px;
-  transition-duration: 0.3s;
-  cursor: pointer;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  margin: 0 auto;
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
 }
 
 .normalButton:hover {
-  background-color: white;
-  color: black;
+  background:#fff;
+  color:#000000;
 }
-
+.noramlButton:before,.normalButton:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.normalButton:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.normalButton:hover:before,.normalButton:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
 .imprint {
   position: absolute;
   top: 15%;
