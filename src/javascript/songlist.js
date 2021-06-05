@@ -1,6 +1,8 @@
 // Strikter Modus für komplettes Skript
 "use strict";
-
+/**
+ * Zeigt alle Songs als Liste an
+ */
 function getSongs() {
   let lists = document.getElementById("songliste");
   let songs = JSON.parse(localStorage.getItem("Alle Songs"));
@@ -47,7 +49,11 @@ function getSongs() {
     lists.appendChild(song);
   }
 }
-
+/**
+ * Formatiert den Songnamen
+ * @param {JSON Object} song
+ * @returns Formatierter Songname
+ */
 function formatName(song) {
   let period = song.src.lastIndexOf(".");
   let slash = song.src.lastIndexOf("/");
@@ -90,7 +96,9 @@ function autoplayddd() {
   audio.load();
   audio.play();
 }
-
+/**
+ * Lässt den Vorherigen Song abspielen
+ */
 function prevSong() {
   let index = JSON.parse(localStorage.getItem("playedsong"));
   let allsongs = JSON.parse(index.current);
@@ -121,7 +129,9 @@ function prevSong() {
   audio.load();
   audio.play();
 }
-
+/**
+ * Lässt den nächsten Song abspielen
+ */
 function nextSong() {
   let index = JSON.parse(localStorage.getItem("playedsong"));
   let allsongs = JSON.parse(index.current);
@@ -153,6 +163,9 @@ function nextSong() {
   audio.load();
   audio.play();
 }
+/**
+ * Stoppt den Song
+ */
 function stopSong() {
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");

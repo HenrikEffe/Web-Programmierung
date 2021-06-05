@@ -1,6 +1,8 @@
 // Strikter Modus für komplettes Skript
 "use strict";
-
+/**
+ * Erstellt eine Playlist aus den ausgewählten Songs
+ */
 function createPlaylist() {
   let lists = document.getElementById("songliste");
   let items = lists.getElementsByTagName("li");
@@ -24,7 +26,9 @@ function createPlaylist() {
     window.location.href = "#playlist";
   }
 }
-
+/**
+ * Zeigt alle Playlist als Liste an
+ */
 function getPlaylists() {
   let lists = document.getElementById("playlists");
   for (let i = 0; i < localStorage.length; i++) {
@@ -55,7 +59,9 @@ function getPlaylists() {
     }
   }
 }
-
+/**
+ * Zeigt die Lieder einer Spezifischen Playlist an
+ */
 function getSpecificPlaylists() {
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
@@ -117,7 +123,9 @@ function getSpecificPlaylists() {
     }
   }
 }
-
+/**
+ * Löscht die ausgewählte Playlist
+ */
 function deletePlaylist() {
   let lists = document.getElementById("playlists");
   let items = lists.getElementsByTagName("li");
@@ -128,7 +136,6 @@ function deletePlaylist() {
       songs.push(items[i].getElementsByTagName("a")[0].innerHTML);
     }
   }
-
   for (let i = 0; i < localStorage.length; i++) {
     let storageKey = localStorage.key(i);
     let retrievedObject = JSON.parse(localStorage.getItem(storageKey));
@@ -137,10 +144,11 @@ function deletePlaylist() {
       localStorage.removeItem(storageKey);
     }
   }
-
   location.reload();
 }
-
+/**
+ * Löscht den ausgewählten Song
+ */
 function removeSong() {
   let lists = document.getElementById("playlists");
   let items = lists.getElementsByTagName("li");
@@ -160,7 +168,9 @@ function removeSong() {
   localStorage.setItem(item, JSON.stringify(obj));
   location.reload();
 }
-
+/**
+ * Versteckt das erstellte PopUp
+ */
 function hidepopup() {
   let lists = document.getElementById("plist");
   let items = lists.getElementsByTagName("li");
@@ -185,13 +195,17 @@ function hidepopup() {
   popup.classList.remove("active");
   location.reload();
 }
-
+/**
+ * Schließt das PopUp
+ */
 function closepopup() {
   var popup = document.getElementById("popup");
   popup.classList.remove("active");
   location.reload();
 }
-
+/**
+ * Lässt das PopUp anzeigen
+ */
 function showpopup() {
   let popup = document.getElementById("popup");
   popup.classList.add("active");
