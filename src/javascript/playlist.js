@@ -148,43 +148,6 @@ function deletePlaylist() {
   location.reload();
 }
 
-function autoplay() {
-  let source = document.getElementById("standardAudioSrc");
-  let audio = document.getElementById("standardAudio");
-  let index = JSON.parse(localStorage.getItem("playedsong"));
-  let allsongs = JSON.parse(index.current);
-  console.log(allsongs);
-
-  // audio.addEventListener('ended', function () {
-
-
-
-  //   let link = JSON.parse(array[i + 1]).src;
-  //   console.log(JSON.parse(array[i + 1]).src)
-  //   period = link.lastIndexOf(".");
-  //   slash = link.lastIndexOf("/");
-  //   songname = link.substring(slash + 1, period);
-  //   songname = songname.replace(/%20/g, " ");
-
-
-  //   localStorage.removeItem("playedsong");
-  //   let obj = {
-  //     type: "playedsong",
-  //     current: JSON.stringify(retrievedObject),
-  //     src: songname,
-  //     key: i + 1,
-  //     nameofPlaylist: item,
-  //   };
-  //   localStorage.setItem("playedsong", JSON.stringify(obj));
-  //   document.getElementById("title").innerText = songname;
-  //   source.src = link;
-
-
-  //   audio.load();
-  //   audio.play();
-  // })
-
-}
 
 
 function removeSong() {
