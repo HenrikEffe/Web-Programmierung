@@ -438,11 +438,7 @@ audio {
   width: 60px;
 }
 
-/* Darkmode Theme */
-.dark-mode {
-  background-color: rgb(0, 0, 0);
-  color: white;
-}
+
 
 .menu-link {
   font-family: "Baloo Da 2", serif;
@@ -467,9 +463,6 @@ audio {
   width: 100%;
 }
 
-.message {
-  bottom: 6rem;
-}
 
 @media (max-width: 1400px) {
   .banner h1 {
@@ -498,10 +491,6 @@ audio {
   margin: auto;
 }
 
-.music-album {
-  text-align: center;
-}
-
 .song-title {
   z-index: 2;
   padding: 5px;
@@ -509,10 +498,6 @@ audio {
   font-size: 3rem;
   font-family: revert;
   font-weight: 1000;
-}
-.artist {
-  font-size: 2rem;
-  color: #b2b9c7;
 }
 
 .checkerSong {
