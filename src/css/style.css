@@ -27,6 +27,7 @@ html {
   --color-primary: rgba(11, 12, 12, 0.8);
 }
 
+
 body {
   background-color: var(--color-secondary);
   overflow: hidden;
@@ -54,7 +55,7 @@ body {
   position: fixed;
   top: 40%;
   left: 50%;
-  background-color: white;
+  background-color: rgb(68 59 59);
   transform: translate(-50%, -50%);
   width: 90%;
   height: 60%;
@@ -64,7 +65,7 @@ body {
   margin: auto;
   z-index: 2;
   border-radius: 5px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #popup ul {
@@ -74,10 +75,21 @@ body {
 #plist li {
   font-size: 1.5rem;
   margin-bottom: 5px;
+  font-family: "Baloo Da 2", serif;
+  color: white;
 }
 
 #popup button {
-  margin: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-style: unset;
+  border-width: large;
+  color: rgb(8, 8, 8);
+  transition-duration: 0.3s;
+    margin-left: 22px;
+    margin-bottom: 5px;
+    width: 15%;
+    height: 10%;
+    border-radius: inherit;
 }
 
 #popup.active {
@@ -518,10 +530,10 @@ audio {
   left: 0;
   height: 0.8em;
   width: 0.8em;
-  background-color: #eee;
+  background-color: rgb(255, 255, 255);
 }
 .checkerSong:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: rgb(255, 255, 255);
 }
 .checkerSong input:checked ~ .checkmark {
   background-color: black;
@@ -560,6 +572,18 @@ audio {
 }
 
 @media (max-width: 1000px) {
+
+  #popup button {
+
+      width: 30%;
+
+  }
+
+  #popup{
+    top: 45%;
+    height: 80%;
+
+  }
   .songlist ul li a:hover {
     font-size: 2rem;
   }
