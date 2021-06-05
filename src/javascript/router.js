@@ -56,6 +56,7 @@ class Router {
             console.log("Start Seite");
             allSongs();
             createIframe();
+            // removeIframe();
           } else if (currentHash == "#song") {
             console.log("Song Seite");
             getSongs();

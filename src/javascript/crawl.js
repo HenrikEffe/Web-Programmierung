@@ -4,7 +4,6 @@
 function createIframe() {
   let theme = { type: "darkmode", src: "theme-light" };
   localStorage.setItem("darkmode", JSON.stringify(theme));
-  // localStorage.clear();
   let ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", "musikframe");
   ifrm.setAttribute("src", "http://localhost/Web-Programmierung/musik");
@@ -17,19 +16,12 @@ function createIframe() {
   iframe.onload = function (event) {
     readSongs(document.getElementById("musikframe"));
   };
+  window.addEventListener("load", function () {
+    removeIframe();
+  });
 }
-// ausgabe des Local Storages
-// window.addEventListener("load", function () {
-// myFunction();
 
-for (let i = 0; i < localStorage.length; i++) {
-  let storageKey = localStorage.key(i);
-  let retrievedObject = JSON.parse(localStorage.getItem(storageKey));
-  console.log(storageKey + " : " + retrievedObject.type);
-}
-// });
-
-async function readFolder(source) {
+function readFolder(source) {
   let ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", source.textContent);
   ifrm.setAttribute("src", source);
@@ -42,7 +34,8 @@ async function readFolder(source) {
     readSongs(document.getElementById(source.textContent));
   };
 }
-async function readSongs(iframe) {
+function readSongs(iframe) {
+  console.log("Hallo");
   let iframebody = iframe.contentWindow.document.querySelector("table").rows;
   let playlistObj = { type: "playlist", songs: [] };
   for (let key = 0; key < iframebody.length; key++) {
@@ -69,28 +62,39 @@ async function readSongs(iframe) {
       readFolder(select);
     }
   }
+  // Name des Liedes formatieren
   let name = iframe.src;
   let slash = name.lastIndexOf("/", name.lastIndexOf("/") - 1);
   name = name.substring(slash + 1, name.lastIndexOf("/"));
+  playlistObj.songs.sort(function (l, u) {
+    return l.toLowerCase().localeCompare(u.toLowerCase());
+  });
   localStorage.setItem(name, JSON.stringify(playlistObj));
 }
 
+// erstellt ein JSON Array für Alle Songs
 function allSongs() {
-  if (localStorage.getItem("Alle Songs") != undefined) {
-    localStorage.removeItem("Alle Songs");
-  }
-  let playlistObj = { type: "songplaylist", songs: [] };
-  for (let i = 0; i < localStorage.length; i++) {
-    let storageKey = localStorage.key(i);
-    let retrievedObject = JSON.parse(localStorage.getItem(storageKey));
-    if (retrievedObject.type == "song") {
-      playlistObj["songs"].push(JSON.stringify(retrievedObject));
+  window.addEventListener("load", function () {
+    if (localStorage.getItem("Alle Songs") != undefined) {
+      localStorage.removeItem("Alle Songs");
     }
-  }
-  localStorage.setItem("Alle Songs", JSON.stringify(playlistObj));
+    let playlistObj = { type: "songplaylist", songs: [] };
+    for (let i = 0; i < localStorage.length; i++) {
+      let storageKey = localStorage.key(i);
+      let retrievedObject = JSON.parse(localStorage.getItem(storageKey));
+      if (retrievedObject.type == "song") {
+        playlistObj["songs"].push(JSON.stringify(retrievedObject));
+      }
+    }
+    playlistObj.songs.sort(function (l, u) {
+      return l.toLowerCase().localeCompare(u.toLowerCase());
+    });
+    localStorage.setItem("Alle Songs", JSON.stringify(playlistObj));
+  });
 }
 
-function myFunction() {
+function removeIframe() {
+  console.log("Remove!");
   let elements = document.getElementsByTagName("iframe");
   while (elements.length) {
     elements[0].parentNode.removeChild(elements[0]);
