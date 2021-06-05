@@ -21,8 +21,9 @@ function createPlaylist() {
       }
     }
     localStorage.setItem(playlistName, JSON.stringify(songs));
+    window.location.href = "#playlist";
   }
-  window.location.href = "#playlist";
+
 }
 
 function getPlaylists() {
