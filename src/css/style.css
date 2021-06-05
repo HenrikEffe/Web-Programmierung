@@ -547,14 +547,7 @@ audio {
   margin-top: 1%;
   margin-bottom: 5%;
 }
-@keyframes rotateFrame {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 
 @media (max-width: 1000px) {
 
@@ -580,14 +573,7 @@ audio {
     font-size: 2rem;
   }
 
-  .animation {
-    background-color: lightblue;
-    width: 10%;
-  }
-  .music-app {
-    height: 90px;
-    margin: 5px auto;
-  }
+
 
   .songlist h1 {
     font-size: 4.5rem;
