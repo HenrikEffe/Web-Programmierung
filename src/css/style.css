@@ -654,4 +654,10 @@ audio {
   .footer{
     width: 100%;
   }
+  .normalButton {
+    width: 40%;
+    margin-right: 3%;
+    margin-top: 5%;
+    font-size: 160%;
+  }
 }
