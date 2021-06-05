@@ -159,3 +159,10 @@ function nextSong() {
   audio.load();
   audio.play();
 }
+function stopSong() {
+  let source = document.getElementById("standardAudioSrc");
+  let audio = document.getElementById("standardAudio");
+  source.src = "";
+  audio.pause();
+  location.reload();
+}
