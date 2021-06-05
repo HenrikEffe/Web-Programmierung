@@ -186,6 +186,17 @@ function hidepopup() {
   location.reload();
 }
 
+
+function closepopup() {
+  var popup = document.getElementById("popup");
+  popup.classList.remove("active");
+  location.reload();
+}
+
+
+
+
+
 function showpopup() {
   var popup = document.getElementById("popup");
   popup.classList.add("active");
