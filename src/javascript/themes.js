@@ -14,3 +14,4 @@ function darkMode() {
 
     localStorage.setItem("darkmode", JSON.stringify(theme));
 }
+

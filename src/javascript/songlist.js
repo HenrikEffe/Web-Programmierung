@@ -7,10 +7,7 @@ function getSongs() {
   for (let i = 0; i < songs.songs.length; i++) {
     let song = document.createElement("li");
     let input = JSON.parse(songs.songs[i]).src;
-    let period = input.lastIndexOf(".");
-    let slash = input.lastIndexOf("/");
-    let songname = input.substring(slash + 1, period);
-    songname = songname.replace(/%20/g, " ");
+    let songname = formatName(JSON.parse(songs.songs[i]));
 
     let labelText = document.createElement("label");
     let inputText = document.createElement("input");
@@ -52,6 +49,19 @@ function getSongs() {
 
 }
 
+function formatName(song) {
+
+  let period = song.src.lastIndexOf(".");
+  let slash = song.src.lastIndexOf("/");
+  let songname = song.src.substring(slash + 1, period);
+  songname = songname.replace(/%20/g, " ");
+  songname = songname.replace(/%c3%a4/g, "ä");
+  songname = songname.replace(/%c3%b6/g, "ö");
+  songname = songname.replace(/%c3%bc/g, "ü");
+  songname = songname.replace(/%c3%9f/g, "ß");
+  return songname;
+}
+
 function autoplayddd() {
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
@@ -65,11 +75,8 @@ function autoplayddd() {
   } else {
     i = i + 1;
   }
-  let song = JSON.parse(allsongs.songs[i]);
-  let period = song.src.lastIndexOf(".");
-  let slash = song.src.lastIndexOf("/");
-  let songname = song.src.substring(slash + 1, period);
-  songname = songname.replace(/%20/g, " ");
+
+  let songname = formatName(JSON.parse(allsongs.songs[i]));
   document.getElementById("title").innerText = songname;
 
 
@@ -83,7 +90,7 @@ function autoplayddd() {
   localStorage.setItem("playedsong", JSON.stringify(obj));
 
 
-  source.src = song.src;
+  source.src = JSON.parse(allsongs.songs[i]).src;
   audio.load();
   audio.play();
 
@@ -102,11 +109,7 @@ function prevSong() {
   }
 
   let song = JSON.parse(allsongs.songs[indexValue]);
-
-  let period = song.src.lastIndexOf(".");
-  let slash = song.src.lastIndexOf("/");
-  let songname = song.src.substring(slash + 1, period);
-  songname = songname.replace(/%20/g, " ");
+  let songname = formatName(song);
 
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
@@ -138,10 +141,8 @@ function nextSong() {
 
   let song = JSON.parse(allsongs.songs[indexValue]);
 
-  let period = song.src.lastIndexOf(".");
-  let slash = song.src.lastIndexOf("/");
-  let songname = song.src.substring(slash + 1, period);
-  songname = songname.replace(/%20/g, " ");
+
+  let songname = formatName(song);
 
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
@@ -158,4 +159,11 @@ function nextSong() {
 
   audio.load();
   audio.play();
+}
+function stopSong() {
+  let source = document.getElementById("standardAudioSrc");
+  let audio = document.getElementById("standardAudio");
+  source.src = "";
+  audio.pause();
+  location.reload();
 }

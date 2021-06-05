@@ -74,10 +74,8 @@ function getSpecificPlaylists() {
     objectSong = JSON.parse(array[b]);
     if (objectSong.type == "song") {
       input = objectSong.src;
-      let period = input.lastIndexOf(".");
-      let slash = input.lastIndexOf("/");
-      let songname = input.substring(slash + 1, period);
-      songname = songname.replace(/%20/g, " ");
+
+      let songname = formatName(objectSong);
 
       let labelText = document.createElement("label");
       let inputText = document.createElement("input");
@@ -211,10 +209,9 @@ function showpopup() {
     objectSong = JSON.parse(array[b]);
     input = objectSong.src;
 
-    let period = input.lastIndexOf(".");
-    let slash = input.lastIndexOf("/");
-    let songname = input.substring(slash + 1, period);
-    songname = songname.replace(/%20/g, " ");
+
+    let songname = formatName(objectSong);
+
 
     let labelText = document.createElement("label");
     let inputText = document.createElement("input");
