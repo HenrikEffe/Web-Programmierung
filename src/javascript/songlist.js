@@ -59,10 +59,10 @@ function formatName(song) {
   let slash = song.src.lastIndexOf("/");
   let songname = song.src.substring(slash + 1, period);
   songname = songname.replace(/%20/g, " ");
-  songname = songname.replace(/%c3%a4/g, "ä");
-  songname = songname.replace(/%c3%b6/g, "ö");
-  songname = songname.replace(/%c3%bc/g, "ü");
-  songname = songname.replace(/%c3%9f/g, "ß");
+  songname = songname.replace(/%C3%A4/g, "ä");
+  songname = songname.replace(/%C3%B6/g, "ö");
+  songname = songname.replace(/%C3%BC/g, "ü");
+  songname = songname.replace(/%C3%9F/g, "ß");
   return songname;
 }
 

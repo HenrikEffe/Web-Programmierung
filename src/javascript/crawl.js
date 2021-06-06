@@ -11,7 +11,7 @@ function setup() {
 function createIframe() {
   let ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", "musikframe");
-  ifrm.setAttribute("src", "http://localhost/Web-Programmierung/musik");
+  ifrm.setAttribute("src", "../../../musik");
   ifrm.style.display = "none";
   document.body.appendChild(ifrm);
   let iframe = document.getElementById("musikframe");
@@ -19,7 +19,7 @@ function createIframe() {
     readSongs(iframe);
   };
   window.addEventListener("load", function () {
-    removeIframe();
+    // removeIframe();
   });
 }
 /**
@@ -43,11 +43,14 @@ function readFolder(source) {
  * @param {IFrame in welches der auszulesene Ordner reingeladen wird} iframe
  */
 function readSongs(iframe) {
-  let iframebody = iframe.contentWindow.document.querySelector("table").rows;
+  let list = iframe.contentWindow.document.getElementById("files");
+  let items = list.getElementsByTagName("li");
+
   // JSON Object mit Array zum Speichern der Unterordner als Playlist
   let playlistObj = { type: "playlist", songs: [] };
-  for (let key = 0; key < iframebody.length; key++) {
-    let select = iframebody[key].querySelector("a");
+  for (let key = 0; key < items.length; key++) {
+    let select = items[key].querySelector("a");
+    console.log(select.toString());
     if (
       select != null &&
       (select.toString().includes(".mp3") || select.toString().includes(".ogg"))
@@ -62,9 +65,9 @@ function readSongs(iframe) {
       }
     } else if (
       select != null &&
-      select.toString().slice(-1) == "/" &&
+      !select.toString().slice(-5).includes(".") &&
       select.toString().includes("musik") &&
-      key != 2
+      key != 0
     ) {
       // Unterordner aufrufen und Musik mit Ordner speichern
       readFolder(select);
@@ -72,8 +75,9 @@ function readSongs(iframe) {
   }
   // Name der Playlist formatieren
   let name = iframe.src;
-  let slash = name.lastIndexOf("/", name.lastIndexOf("/") - 1);
-  name = name.substring(slash + 1, name.lastIndexOf("/"));
+  console.log("name:", name);
+  let slash = name.lastIndexOf("/");
+  name = name.substring(slash + 1);
   name = name.replace(/%20/g, " ");
   name = name.replace(/%c3%a4/g, "ä");
   name = name.replace(/%c3%b6/g, "ö");
