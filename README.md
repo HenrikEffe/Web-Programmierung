@@ -24,5 +24,6 @@
 ### Anforderungen zum Starten des Musik Players
 
 - Musik im Ordner Web-Programmierung/musik ablegen
+  -- Musikdatei im Format .mp3 oder .ogg
 - Projekt auf einem Apache Tomcat Server starten
   -- Domain http://localhost/Web-Programmierung/#start
