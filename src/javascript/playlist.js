@@ -72,7 +72,6 @@ function getSpecificPlaylists() {
 
   let retrievedObject = JSON.parse(localStorage.getItem(item));
 
-  console.log(retrievedObject);
   let array = retrievedObject.songs;
   let objectSong = "";
   let input = "";
@@ -100,8 +99,6 @@ function getSpecificPlaylists() {
       ref.appendChild(linkText);
 
       ref.addEventListener("click", function playSong() {
-        console.log(retrievedObject, "Retrieved Object");
-
         let obj = {
           type: "playedsong",
           current: JSON.stringify(retrievedObject),
@@ -132,7 +129,6 @@ function deletePlaylist() {
   let songs = new Array();
   for (let i = 0; i < items.length; ++i) {
     if (items[i].getElementsByTagName("input")[0].checked) {
-      console.log(items[i] + items[i].getElementsByTagName("a")[0].innerHTML);
       songs.push(items[i].getElementsByTagName("a")[0].innerHTML);
     }
   }
