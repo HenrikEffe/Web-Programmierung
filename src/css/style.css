@@ -10,6 +10,19 @@
   list-style: none;
   text-decoration: none;
 }
+.impLink:link {
+  color: #2196f3;
+  text-decoration: none;
+}
+.impLink:visited {
+  color: #2196f3;
+  text-decoration: none;
+}
+.impLink:hover {
+  color: rgb(25, 68, 211);
+  text-decoration: none;
+  cursor: pointer;
+}
 
 html {
   font-size: 62.5%;
@@ -26,7 +39,6 @@ html {
   --color-secondary: rgba(6, 21, 88, 0.8);
   --color-primary: rgba(11, 12, 12, 0.8);
 }
-
 
 body {
   background-color: var(--color-secondary);
@@ -50,10 +62,10 @@ body {
 .container#blur.active {
   filter: blur(20px);
 }
-#volume{
+#volume {
   display: none;
 }
-#volumeButton{
+#volumeButton {
   display: none;
 }
 #popup {
@@ -88,11 +100,10 @@ body {
   border-style: unset;
   border-width: large;
   transition-duration: 0.3s;
-    margin-left: 22px;
-    margin-bottom: 5px;
-    width: 15%;
-    height: 10%;
-    
+  margin-left: 22px;
+  margin-bottom: 5px;
+  width: 15%;
+  height: 10%;
 }
 
 #popup.active {
@@ -216,41 +227,43 @@ audio {
 }
 
 .normalButton {
-  background:#1AAB8A;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
+  background: #1aab8a;
+  color: #fff;
+  border: none;
+  position: relative;
+  height: 60px;
+  font-size: 1.6em;
+  padding: 0 2em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
 }
 
 .normalButton:hover {
-  background:#fff;
-  color:#000000;
+  background: #fff;
+  color: #000000;
 }
-.noramlButton:before,.normalButton:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #1AAB8A;
-  transition:400ms ease all;
+.noramlButton:before,
+.normalButton:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #1aab8a;
+  transition: 400ms ease all;
 }
-.normalButton:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
+.normalButton:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
 }
-.normalButton:hover:before,.normalButton:hover:after{
-  width:100%;
-  transition:800ms ease all;
+.normalButton:hover:before,
+.normalButton:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
 }
 .imprint {
   position: absolute;
@@ -460,8 +473,6 @@ audio {
   width: 60px;
 }
 
-
-
 .menu-link {
   font-family: "Baloo Da 2", serif;
   font-size: 4rem;
@@ -484,7 +495,6 @@ audio {
 .menu-link:hover::before {
   width: 100%;
 }
-
 
 @media (max-width: 1400px) {
   .banner h1 {
@@ -570,24 +580,25 @@ audio {
   margin-bottom: 5%;
 }
 
-
 @media (max-width: 1000px) {
-  .song-title {
-
+  .space p {
+    font-size: 1.7rem;
+  }
+  .space h2 {
     font-size: 2rem;
+  }
 
+  .song-title {
+    font-size: 2rem;
   }
 
   #popup button {
-
-      width: 30%;
-
+    width: 30%;
   }
 
-  #popup{
+  #popup {
     top: 45%;
     height: 80%;
-
   }
   .songlist ul li a:hover {
     font-size: 2rem;
@@ -599,8 +610,6 @@ audio {
   #songbutton {
     font-size: 2rem;
   }
-
-
 
   .songlist h1 {
     font-size: 4.5rem;
@@ -626,7 +635,7 @@ audio {
   .banner p {
     font-size: 2.5rem;
   }
-  .footer{
+  .footer {
     height: 25%;
     width: 100%;
   }
@@ -648,10 +657,9 @@ audio {
   body {
     padding-bottom: 100%;
   }
-  .footer{
+  .footer {
     width: 100%;
   }
-  
 }
 
 @media (max-width: 500px) {
@@ -674,7 +682,7 @@ audio {
   .change .hamburger-menu {
     right: 38rem;
   }
-  .footer{
+  .footer {
     width: 100%;
   }
   .normalButton {
@@ -683,10 +691,10 @@ audio {
     margin-top: 5%;
     font-size: 160%;
   }
-  #volume{
+  #volume {
     display: unset;
   }
-  #volumeButton{
+  #volumeButton {
     display: unset;
     font-size: 250%;
   }
