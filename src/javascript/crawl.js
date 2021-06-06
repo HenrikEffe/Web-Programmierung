@@ -70,7 +70,7 @@ function readSongs(iframe) {
       readFolder(select);
     }
   }
-  // Name des Liedes formatieren
+  // Name der Playlist formatieren
   let name = iframe.src;
   let slash = name.lastIndexOf("/", name.lastIndexOf("/") - 1);
   name = name.substring(slash + 1, name.lastIndexOf("/"));
