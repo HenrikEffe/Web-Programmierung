@@ -27,6 +27,6 @@
 - Musik im Ordner 'musik' ablegen
   -- Musikdatei im Format .mp3 oder .ogg
 - Python Server starten
-  -- python3 -m http.server "Port" --bind "Domäne"
+  -- python -m http.server "Port" --bind "Domäne"
 - aktuellen Pfad der Datei eingeben
   -- "Domäne":"Port"/"aktuelle Pfad"
