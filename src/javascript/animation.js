@@ -4,7 +4,6 @@ window.onload = function () {
   var audio = document.getElementById("standardAudio");
 
   audio.addEventListener("playing", function () {
-    console.log("ich bin hier!");
     try {
       var context = new AudioContext();
       var src = context.createMediaElementSource(audio);
@@ -21,7 +20,6 @@ window.onload = function () {
       analyser.fftSize = 256;
 
       var bufferLength = analyser.frequencyBinCount;
-      console.log(bufferLength);
 
       var dataArray = new Uint8Array(bufferLength);
 
