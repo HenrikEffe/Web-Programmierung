@@ -11,7 +11,7 @@ function setup() {
 function createIframe() {
   let ifrm = document.createElement("iframe");
   ifrm.setAttribute("id", "musikframe");
-  ifrm.setAttribute("src", "../../../musik");
+  ifrm.setAttribute("src", "musik");
   ifrm.style.display = "none";
   document.body.appendChild(ifrm);
   let iframe = document.getElementById("musikframe");
@@ -43,51 +43,56 @@ function readFolder(source) {
  * @param {IFrame in welches der auszulesene Ordner reingeladen wird} iframe
  */
 function readSongs(iframe) {
-  let list = iframe.contentWindow.document.getElementById("files");
-  let items = list.getElementsByTagName("li");
+  let list = iframe.contentWindow.document.getElementsByTagName("ul")[0];
+  if (list.getElementsByTagName("li") == null) {
+    console.log("Der Musikordner ist leer!");
+  } else {
+    let items = list.getElementsByTagName("li");
 
-  // JSON Object mit Array zum Speichern der Unterordner als Playlist
-  let playlistObj = { type: "playlist", songs: [] };
-  for (let key = 0; key < items.length; key++) {
-    let select = items[key].querySelector("a");
-    console.log(select.toString());
-    if (
-      select != null &&
-      (select.toString().includes(".mp3") || select.toString().includes(".ogg"))
-    ) {
-      // Musik in Webstorage speichern
-      if (typeof Storage !== "undefined") {
-        let obj = { type: "song", src: select.toString() };
-        playlistObj["songs"].push(JSON.stringify(obj));
-        localStorage.setItem(select.textContent, JSON.stringify(obj));
-      } else {
-        allert("Sorry! No Web Storage support...");
+    // JSON Object mit Array zum Speichern der Unterordner als Playlist
+    let playlistObj = { type: "playlist", songs: [] };
+    for (let key = 0; key < items.length; key++) {
+      let select = items[key].querySelector("a");
+      console.log(select.toString());
+      if (
+        select != null &&
+        (select.toString().includes(".mp3") ||
+          select.toString().includes(".ogg"))
+      ) {
+        // Musik in Webstorage speichern
+        if (typeof Storage !== "undefined") {
+          let obj = { type: "song", src: select.toString() };
+          playlistObj["songs"].push(JSON.stringify(obj));
+          localStorage.setItem(select.textContent, JSON.stringify(obj));
+        } else {
+          allert("Sorry! No Web Storage support...");
+        }
+      } else if (
+        select != null &&
+        !select.toString().slice(-5).includes(".") &&
+        select.toString().includes("musik") &&
+        key != 0
+      ) {
+        // Unterordner aufrufen und Musik mit Ordner speichern
+        readFolder(select);
       }
-    } else if (
-      select != null &&
-      !select.toString().slice(-5).includes(".") &&
-      select.toString().includes("musik") &&
-      key != 0
-    ) {
-      // Unterordner aufrufen und Musik mit Ordner speichern
-      readFolder(select);
     }
+    // Name der Playlist formatieren
+    let name = iframe.src;
+    console.log("name:", name);
+    let slash = name.lastIndexOf("/");
+    name = name.substring(slash + 1);
+    name = name.replace(/%20/g, " ");
+    name = name.replace(/%c3%a4/g, "ä");
+    name = name.replace(/%c3%b6/g, "ö");
+    name = name.replace(/%c3%bc/g, "ü");
+    name = name.replace(/%c3%9f/g, "ß");
+    // Array nach Namen sortieren
+    playlistObj.songs.sort(function (l, u) {
+      return l.toLowerCase().localeCompare(u.toLowerCase());
+    });
+    localStorage.setItem(name, JSON.stringify(playlistObj));
   }
-  // Name der Playlist formatieren
-  let name = iframe.src;
-  console.log("name:", name);
-  let slash = name.lastIndexOf("/");
-  name = name.substring(slash + 1);
-  name = name.replace(/%20/g, " ");
-  name = name.replace(/%c3%a4/g, "ä");
-  name = name.replace(/%c3%b6/g, "ö");
-  name = name.replace(/%c3%bc/g, "ü");
-  name = name.replace(/%c3%9f/g, "ß");
-  // Array nach Namen sortieren
-  playlistObj.songs.sort(function (l, u) {
-    return l.toLowerCase().localeCompare(u.toLowerCase());
-  });
-  localStorage.setItem(name, JSON.stringify(playlistObj));
 }
 
 /**

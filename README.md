@@ -23,7 +23,10 @@
 
 ### Anforderungen zum Starten des Musik Players
 
-- Musik im Ordner Web-Programmierung/musik ablegen
+- .war Datei per jar -xvf WebProgrammierung.war entpacken
+- Musik im Ordner 'musik' ablegen
   -- Musikdatei im Format .mp3 oder .ogg
-- Projekt auf einem Apache Tomcat Server starten
-  -- Domain http://localhost/Web-Programmierung/#start
+- Python Server starten
+  -- python3 -m http.server "Port" --bind "Domäne"
+- aktuellen Pfad der Datei eingeben
+  -- "Domäne":"Port"/"aktuelle Pfad"
