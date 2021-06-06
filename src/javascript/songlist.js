@@ -66,7 +66,7 @@ function formatName(song) {
   return songname;
 }
 
-function autoplayddd() {
+function autoplaySong() {
   let source = document.getElementById("standardAudioSrc");
   let audio = document.getElementById("standardAudio");
 
