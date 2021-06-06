@@ -19,7 +19,7 @@ function createIframe() {
     readSongs(iframe);
   };
   window.addEventListener("load", function () {
-    // removeIframe();
+    removeIframe();
   });
 }
 /**
@@ -79,9 +79,8 @@ function readSongs(iframe) {
     }
     // Name der Playlist formatieren
     let name = iframe.src;
-    console.log("name:", name);
-    let slash = name.lastIndexOf("/");
-    name = name.substring(slash + 1);
+    let slash = name.lastIndexOf("/", name.lastIndexOf("/") - 1);
+    name = name.substring(slash + 1, name.lastIndexOf("/"));
     name = name.replace(/%20/g, " ");
     name = name.replace(/%c3%a4/g, "ä");
     name = name.replace(/%c3%b6/g, "ö");
