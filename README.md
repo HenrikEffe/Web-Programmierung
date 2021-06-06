@@ -6,13 +6,19 @@
 
 - Songs aus Ordner Crawlen
 - Songs Abspielen
-  -- Visualisierung des Sounds
+  -- Play/Pause, Stop, Next, Previous
+  -- Autoplay
+- Visualisierung des Sounds
+  -- Equalizer
 - Alle Songs anzeigen
   -- Sortiert nach Namen
 - Playlisten erstellen
 - Playlist anzeigen
 - Playlist bearbeiten
   -- Songs entfernen, hinzufügen
+- Playlist entfernen
+- Themes
+  -- Dark-Mode, Light-Mode
 - Impressum anzeigen
 
 ### Anforderungen zum Starten des Musik Players
